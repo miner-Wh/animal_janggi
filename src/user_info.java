@@ -1,11 +1,11 @@
 public class user_info {
-    String ID;
-    String PW;
-    String name;
-    String nick;
-    String email;
-    String sns;
-    String game_record;
+    String        ID;
+    String        PW;
+    String        name;
+    String        nick;
+    String        email;
+    String        sns;
+    String        game_record;
     access_record my_access;
 
     user_info(String ID,String PW,String name, String nick, String email){
