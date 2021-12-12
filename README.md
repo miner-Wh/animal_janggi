@@ -100,4 +100,4 @@ if(Game.button_click(PLAYER1, new POS(BOARD, 2, 2)) == MOVED) {
 ## POS.x
 * type {Number}
 보드에서 x좌표를 나타냄
-플레이어가 잡은 말일 경우 0임ㅖㅒ
+플레이어가 잡은 말일 경우 0임
