@@ -64,10 +64,10 @@ public class Login {
 		frame.setSize(1200,1200/12*9);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("½ÊÀÌÀå±â");
+		frame.setTitle("ì‹­ì´ì¥ê¸°");
 		frame.getContentPane().setLayout(null);
 		//////////////////////////////////////////////////////////////////////////
-		////////////·Î±×ÀÎ ÆĞ³Î /////////////////////////////////////////////////////
+		////////////ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ğ³ï¿½ /////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////
 		JPanel Loginpage = new JPanel();
 		frame.getContentPane().add(Loginpage);
@@ -79,14 +79,14 @@ public class Login {
 		logbtn.setForeground(SystemColor.window);
 		logbtn.setBackground(SystemColor.activeCaption);
 		JLabel ID = new JLabel("ID");
-		JLabel title = new JLabel("ä¨ì£íâÑ¤");
+		JLabel title = new JLabel("ï¿½ï¿½ï¿½ï¿½Ñ¤");
 		JTextField txtID = new JTextField(20);
 		JLabel password = new JLabel("Password");
 		JPasswordField txtpassword = new JPasswordField(20);
 		JButton accountbtn = new JButton("Crate account");
 		
 		//////////////////////////////////////////////////////////////////////////
-		////////////°èÁ¤ »ı¼ºÃ¢/////////////////////////////////////////////////////
+		////////////ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¢/////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////
 		JPanel Accountpage = new JPanel();
 		Accountpage.setBackground(new Color(220, 220, 220));
@@ -97,7 +97,7 @@ public class Login {
 		
 		JLabel CreateID = new JLabel("ID");
 		CreateID.setHorizontalAlignment(SwingConstants.CENTER);
-		CreateID.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		CreateID.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 17));
 		CreateID.setBounds(123, 129, 97, 23);
 		Accountpage.add(CreateID);
 		
@@ -119,7 +119,7 @@ public class Login {
 		
 		JLabel Name = new JLabel("Name");
 		Name.setHorizontalAlignment(SwingConstants.CENTER);
-		Name.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		Name.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 17));
 		Name.setBounds(123, 79, 97, 23);
 		Accountpage.add(Name);
 		
@@ -129,7 +129,7 @@ public class Login {
 		
 		JLabel Createpassword = new JLabel("Password");
 		Createpassword.setHorizontalAlignment(SwingConstants.CENTER);
-		Createpassword.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		Createpassword.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 17));
 		Createpassword.setBounds(123, 230, 97, 23);
 		Accountpage.add(Createpassword);
 		
@@ -139,7 +139,7 @@ public class Login {
 		
 		JLabel NickName = new JLabel("NickName");
 		NickName.setHorizontalAlignment(SwingConstants.CENTER);
-		NickName.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		NickName.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 17));
 		NickName.setBounds(123, 275, 97, 23);
 		Accountpage.add(NickName);
 		
@@ -149,7 +149,7 @@ public class Login {
 		
 		JLabel SNS = new JLabel("SNS");
 		SNS.setHorizontalAlignment(SwingConstants.CENTER);
-		SNS.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		SNS.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 17));
 		SNS.setBounds(123, 375, 97, 23);
 		Accountpage.add(SNS);
 		
@@ -159,7 +159,7 @@ public class Login {
 		
 		JLabel Mail = new JLabel("E-MAIL");
 		Mail.setHorizontalAlignment(SwingConstants.CENTER);
-		Mail.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		Mail.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 17));
 		Mail.setBounds(123, 328, 97, 23);
 		Accountpage.add(Mail);
 		
@@ -180,10 +180,10 @@ public class Login {
 		Accountpage.setVisible(false);
 		
 		
-		//°èÁ¤ »ı¼º¹öÆ° CREATE
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ° CREATE
 		createbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//»ı¼ºµÈ °èÁ¤ Á¤º¸
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				String new_id = txtCreateID.getText();
 				String new_name = txtName.getText();
 				String new_password = txtCreatepassword.getText();
@@ -191,15 +191,15 @@ public class Login {
 				String new_mail = txtMail.getText();
 				String new_nickname = txtNickName.getText();
 				if(check1) {
-				JOptionPane.showMessageDialog(null,"°èÁ¤ÀÌ »ı¼ºµÇ¾ú½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(null,"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 				Accountpage.setVisible(false);
 				Loginpage.setVisible(true);}else {
-					JOptionPane.showMessageDialog(null,"¾ÆÀÌµğ Áßº¹È®ÀÎÀ» ÇØÁÖ¼¼¿ä");
+					JOptionPane.showMessageDialog(null,"ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½");
 				}
 
 			}
 		});
-		//·Î±×ÀÎÃ¢ µ¹¾Æ°¡±â
+		//ï¿½Î±ï¿½ï¿½ï¿½Ã¢ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½
 		back_login.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Accountpage.setVisible(false);
@@ -207,16 +207,16 @@ public class Login {
 
 			}
 		});
-		//Áßº¹È®ÀÎ ¹öÆ°
+		//ï¿½ßºï¿½È®ï¿½ï¿½ ï¿½ï¿½Æ°
 		duplicatebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String dup_id="gachon";
 				
 				if(dup_id.equals(txtCreateID.getText())) {
-					check.setText("»ç¿ë ºÒ°¡´ÉÇÑ IDÀÔ´Ï´Ù.");
+					check.setText("ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½Ô´Ï´ï¿½.");
 					check1=false;
 				}else{
-					check.setText("»ç¿ë °¡´ÉÇÑ IDÀÔ´Ï´Ù.");	
+					check.setText("ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½Ô´Ï´ï¿½.");	
 					check1=true;
 				}
 				
@@ -233,15 +233,15 @@ public class Login {
 			
 			
 			
-			////////·Î±×ÀÎ Á¢¼Ó ÀÛµ¿
+			////////ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ûµï¿½
 			
 			
 			logbtn.setFont(new Font("CentSchbook BT", Font.PLAIN, 26));
-			title.setFont(new Font("ÇÑÄÄ À±°íµñ 240", Font.BOLD, 57));
+			title.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ 240", Font.BOLD, 57));
 			title.setHorizontalAlignment(SwingConstants.CENTER);
-			ID.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+			ID.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 17));
 			ID.setHorizontalAlignment(SwingConstants.CENTER);
-			password.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+			password.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 17));
 			password.setHorizontalAlignment(SwingConstants.CENTER);
 			
 					
@@ -265,7 +265,7 @@ public class Login {
 					Loginpage.add(accountbtn);
 				
 					
-					//LOGIN ¹öÆ°
+					//LOGIN ï¿½ï¿½Æ°
 					logbtn.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							String id= "gachon";
@@ -275,14 +275,14 @@ public class Login {
 								frame.setVisible(false);
 								new Square();
 								
-								JOptionPane.showMessageDialog(null,"·Î±×ÀÎ µÇ¾ú½À´Ï´Ù.");	
+								JOptionPane.showMessageDialog(null,"ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");	
 							}else {
-								JOptionPane.showMessageDialog(null,"¾ÆÀÌµğ¿Í ºñ¹øÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù.");
+								JOptionPane.showMessageDialog(null,"ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.");
 							}
 							
 						}
 					});
-					//LOGIN ¹öÆ°
+					//LOGIN ï¿½ï¿½Æ°
 					txtID.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							String id= "gachon";
@@ -292,14 +292,14 @@ public class Login {
 								frame.setVisible(false);
 								new Square();
 								
-								JOptionPane.showMessageDialog(null,"·Î±×ÀÎ µÇ¾ú½À´Ï´Ù.");	
+								JOptionPane.showMessageDialog(null,"ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");	
 							}else {
-								JOptionPane.showMessageDialog(null,"¾ÆÀÌµğ¿Í ºñ¹øÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù.");
+								JOptionPane.showMessageDialog(null,"ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.");
 							}
 							
 						}
 					});
-					//LOGIN ¹öÆ°
+					//LOGIN ï¿½ï¿½Æ°
 				txtpassword.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							String id= "gachon";
@@ -309,14 +309,14 @@ public class Login {
 								frame.setVisible(false);
 								new Square();
 								
-								JOptionPane.showMessageDialog(null,"·Î±×ÀÎ µÇ¾ú½À´Ï´Ù.");	
+								JOptionPane.showMessageDialog(null,"ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");	
 							}else {
-								JOptionPane.showMessageDialog(null,"¾ÆÀÌµğ¿Í ºñ¹øÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù.");
+								JOptionPane.showMessageDialog(null,"ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.");
 							}
 							
 						}
 					});
-					//°èÁ¤ »ı¼ºÃ¢ ¹öÆ°
+					//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¢ ï¿½ï¿½Æ°
 					accountbtn.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							Accountpage.setVisible(true);

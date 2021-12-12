@@ -1,4 +1,6 @@
-public class user_info {
+import java.io.Serializable;
+
+public class user_info implements Serializable {
     String        ID;
     String        PW;
     String        name;
