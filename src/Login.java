@@ -233,7 +233,7 @@ public class Login {
 			
 			
 			
-
+			////////로그인 접속 작동
 			
 			
 			logbtn.setFont(new Font("CentSchbook BT", Font.PLAIN, 26));
@@ -272,6 +272,43 @@ public class Login {
 							String pass = "2021";
 							
 							if(id.equals(txtID.getText())&&pass.equals(txtpassword.getText())) {
+								frame.setVisible(false);
+								new Square();
+								
+								JOptionPane.showMessageDialog(null,"로그인 되었습니다.");	
+							}else {
+								JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
+							}
+							
+						}
+					});
+					//LOGIN 버튼
+					txtID.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							String id= "gachon";
+							String pass = "2021";
+							
+							if(id.equals(txtID.getText())&&pass.equals(txtpassword.getText())) {
+								frame.setVisible(false);
+								new Square();
+								
+								JOptionPane.showMessageDialog(null,"로그인 되었습니다.");	
+							}else {
+								JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
+							}
+							
+						}
+					});
+					//LOGIN 버튼
+				txtpassword.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							String id= "gachon";
+							String pass = "2021";
+							
+							if(id.equals(txtID.getText())&&pass.equals(txtpassword.getText())) {
+								frame.setVisible(false);
+								new Square();
+								
 								JOptionPane.showMessageDialog(null,"로그인 되었습니다.");	
 							}else {
 								JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
