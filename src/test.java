@@ -8,12 +8,11 @@ public class test {
     @SuppressWarnings({ "rawtypes", "unchecked", "nls" })
     public static void main(String[] args) throws IOException {
 
-        FileOutputStream fileStream = new FileOutputStream("./user_test.ser");
+        FileOutputStream fileStream = new FileOutputStream("./user_test.dat");
 
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileStream);
 
         user_info sample  = new user_info("admin","admin","min", "min", "whyuk47@naver.com");
-        FileOutputStream out = new FileOutputStream("user_datas.data");
 
 
 
