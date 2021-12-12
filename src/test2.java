@@ -7,6 +7,7 @@ public class test2  {
 
     @SuppressWarnings({ "rawtypes", "unchecked", "nls" })
     public static void main(String[] args) throws IOException, ClassNotFoundException {
+        System.out.println("so happy");
 
         FileInputStream fileStream = new FileInputStream("./user_test.dat");
 
