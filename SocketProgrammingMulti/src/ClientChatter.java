@@ -21,7 +21,7 @@ class ClientChatter extends Thread{
   }catch(Exception e){
    System.out.println(e.getMessage());
    System.out.println("Socket 생성 및 i/o stream얻기에서 예외발생..");
-   //예외발생시 다시 실행하던지 종료하던지 처리해야해!!!!!!!
+   //예외발생시 다시 실행하던지 종료하던지 처리
   }  
  }
 

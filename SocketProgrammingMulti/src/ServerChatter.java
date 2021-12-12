@@ -37,7 +37,7 @@ class ServerChatter extends Thread{
  //         로그인 기능으로 확장할 수 있다.
  public void login(){
   
-  String members[] = {"강아지","송아지","고양이"}; //접속 가능한 아이디가 3개만 존재한다고 가정한다.
+  String members[] = {"민우혁","홍의정","장윤영","강성연"}; //접속 가능한 아이디가 4개만 존재한다고 가정한다.
   String tempId = null;
   
   try{
