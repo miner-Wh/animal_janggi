@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class access_record {
+public class access_record implements Serializable {
     List<String> record;
     //접속 기록을 리스트 어레이 형식으로 저장
 

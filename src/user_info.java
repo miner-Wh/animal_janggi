@@ -1,11 +1,13 @@
-public class user_info {
-    String ID;
-    String PW;
-    String name;
-    String nick;
-    String email;
-    String sns;
-    String game_record;
+import java.io.Serializable;
+
+public class user_info implements Serializable {
+    String        ID;
+    String        PW;
+    String        name;
+    String        nick;
+    String        email;
+    String        sns;
+    String        game_record;
     access_record my_access;
 
     user_info(String ID,String PW,String name, String nick, String email){
