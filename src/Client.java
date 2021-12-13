@@ -12,6 +12,7 @@ public class Client {
 
 
 
+
   chatter.close();
   //chatter.login();  // 대화명 입력
   ////chatter.ready();  // 대화 시작을 기다린다.
