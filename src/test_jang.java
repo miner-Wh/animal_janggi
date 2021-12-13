@@ -20,7 +20,7 @@ public class test_jang {
 
 
 
-        String test1="log/2/admin1/admin1";
+        String test1="log/2/admin1/admin1"; //=  message = br.readLine();
         messageHand(test1, my_user);
 
 
