@@ -130,7 +130,7 @@ class ServerChatter extends Thread{
    System.out.println("close()..도중 예외 발생!");
   }
  }
- public void messageHand(String a, ArrayList<user_info> user){
+ public void messageHand(String a, ArrayList<user_info> user) throws IOException {
   //
 
   String oper = "";
@@ -144,12 +144,20 @@ class ServerChatter extends Thread{
   a = a.substring(bg+1);
 
 
+  String ID ="";
+  String PW ="";
+  String NAME ="";
+  String NICK ="";
+  String EMAIL ="";
+  String SNS ="";
+  String CONTENT ="";
+
+
 
   switch (oper){
    case "log":
     System.out.println("in?");
-    String ID ="";
-    String PW ="";
+
     bg= a.indexOf("/");
     ID =a.substring(0,bg);
     a = a.substring(bg+1);
@@ -159,16 +167,70 @@ class ServerChatter extends Thread{
     System.out.println(is_my_user(user,ID,PW));
     sendMessage(is_my_user(user,ID,PW));
     break;
-   case "SIGN":
+   case "sign":
+    bg= a.indexOf("/");
+    ID =a.substring(0,bg);
+    a = a.substring(bg+1);
+
+    bg= a.indexOf("/");
+    PW =a.substring(0,bg);
+    a = a.substring(bg+1);
+
+    bg= a.indexOf("/");
+    NAME =a.substring(0,bg);
+    a = a.substring(bg+1);
+
+    bg= a.indexOf("/");
+    NICK =a.substring(0,bg);
+    a = a.substring(bg+1);
+
+    if(num=="5"){
+
+     EMAIL =a.substring(0);
+    }
+    else {
+     bg= a.indexOf("/");
+     EMAIL =a.substring(0,bg);
+     a = a.substring(bg+1);
+     SNS = a.substring(0);
+    }
+    FileOutputStream fileStream = new FileOutputStream("./user_test.dat"); //파일 저장 위치
+
+    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileStream);
+
+
+    user_info sample= new user_info(ID,PW,NAME,NICK,EMAIL,SNS);
+    System.out.println(1);
+    user.add(sample);
+    sendMessage("1");
+    objectOutputStream.writeObject(user);
+
+    objectOutputStream.close();
+
+
+    break;
+   case "dup":
+    //   admin
+    ID =a.substring(0);
+    is_dup(user,ID);
+    System.out.println(is_dup(user,ID));
+
+    sendMessage(is_dup(user,ID));
+
+
+    break;
+   case "all":
+    bg= a.indexOf("/");
+    NICK =a.substring(0,bg);
+    a = a.substring(bg+1);
+
+    CONTENT=a.substring(0);
+    System.out.println("\n"+NICK+": "+CONTENT);
+
+    break;
    default:
     break;
   }
-
-
-
-  //for(int n=0;n<Integer.valueOf(num);n++){
-  //
-  //}
  }
  public static String is_my_user(ArrayList<user_info> user, String id, String pw){
   for(int a=0;a<user.size();a++){
@@ -182,5 +244,16 @@ class ServerChatter extends Thread{
    }
   }
   return "2";
+ }
+ //중복확인//
+ public static String is_dup(ArrayList<user_info> user, String id){
+  for(int a=0;a<user.size();a++){
+   user_info temp=user.get(a);
+   if(temp.ID.compareTo(id)==0){
+    return "1"; //아이디가 같아요
+   }
+  }
+  return "0"; //달라요
+
  }
 }
