@@ -144,7 +144,7 @@ public class test_jang {
         return 2;
     }
 
-    //중복확인
+    //중복확인//
     public static int is_dup(ArrayList<user_info> user, String id){
         for(int a=0;a<user.size();a++){
             user_info temp=user.get(a);
@@ -155,7 +155,5 @@ public class test_jang {
         return 0; //달라요
 
     }
-    public static void all(){
 
-    }
 }
