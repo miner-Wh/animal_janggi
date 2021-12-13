@@ -1,6 +1,7 @@
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 
 public class test {
@@ -12,9 +13,14 @@ public class test {
 
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileStream);
 
-        user_info sample  = new user_info("admin","admin","min", "min", "whyuk47@naver.com");
+        user_info sample1  = new user_info("admin1","admin1","min1", "min1", "whyuk1@naver.com");
+        user_info sample2  = new user_info("admin2","admin2","min2", "min2", "whyuk2@naver.com");
+        user_info sample3  = new user_info("admin3","admin3","min3", "min3", "whyuk3@naver.com");
 
-
+        ArrayList<user_info> sample = new ArrayList<>();
+        sample.add(sample1);
+        sample.add(sample2);
+        sample.add(sample3);
 
         objectOutputStream.writeObject(sample);
 
