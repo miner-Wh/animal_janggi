@@ -202,12 +202,12 @@ public class Login {
 					int get =0;
 
 					try {
-						get = chatter.sendMSG("SING/6"+"/"+new_id+"/"+new_password+"/"+new_name+"/"+new_nickname+"/"+new_mail+"/"+new_sns);
+						get = chatter.sendMSG("sign/6"+"/"+new_id+"/"+new_password+"/"+new_name+"/"+new_nickname+"/"+new_mail+"/"+new_sns);
 					} catch (IOException ex) {
 						ex.printStackTrace();
 					}
 
-					if(get ==0){
+					if(get ==1){
 						JOptionPane.showMessageDialog(null,"계정이 생성되었습니다.");
 
 						Accountpage.setVisible(false);
@@ -239,13 +239,13 @@ public class Login {
 				int get=0;
 
 				try {
-					get = chatter.sendMSG("DUP/1/"+txtCreateID.getText());
+					get = chatter.sendMSG("dup/1/"+txtCreateID.getText());
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
 
 
-				if(get==0) {
+				if(get==1) {
 					check.setText("사용 불가능한 ID입니다.");
 					check1=false;
 				}else{
