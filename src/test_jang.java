@@ -155,5 +155,7 @@ public class test_jang {
         return 0; //달라요
 
     }
+    public static void all(){
 
+    }
 }
