@@ -292,7 +292,8 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 				int get=0;
 				try {
-					get= chatter.sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
+					get = chatter.sendMSG("LOG/2/"+txtID.getText()+"/"+txtpassword.getText());
+					System.out.println(get);
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
@@ -358,7 +359,7 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 				int get=0;
 				try {
-					get = chatter.sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
+					get = chatter.sendMSG("LOG/2/"+txtID.getText()+"/"+txtpassword.getText());
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
@@ -377,54 +378,54 @@ public class Login {
 
 			}
 		});
-		//LOGIN 버튼
-		txtID.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int get=0;
-				try {
-					get = chatter.sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
-				} catch (IOException ex) {
-					ex.printStackTrace();
-				}
-
-				if(get==1) {
-					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
-					frame.setVisible(false);
-					new Square();
-				}
-				else if(get==2) {
-					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
-				}
-				else if(get==3) {
-					JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
-				}
-
-			}
-		});
-		//LOGIN 버튼
-		txtpassword.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int get=0;
-				try {
-					get = chatter.sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
-				} catch (IOException ex) {
-					ex.printStackTrace();
-				}
-
-				if(get==1) {
-					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
-					frame.setVisible(false);
-					new Square();
-				}
-				else if(get==2) {
-					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
-				}
-				else if(get==3) {
-					JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
-				}
-
-			}
-		});
+//		//LOGIN 버튼
+//		txtID.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				int get=0;
+//				try {
+//					get = chatter.sendMSG("LOG/2/"+txtID.getText()+"/"+txtpassword.getText());
+//				} catch (IOException ex) {
+//					ex.printStackTrace();
+//				}
+//
+//				if(get==1) {
+//					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
+//					frame.setVisible(false);
+//					new Square();
+//				}
+//				else if(get==2) {
+//					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
+//				}
+//				else if(get==3) {
+//					JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
+//				}
+//
+//			}
+//		});
+//		//LOGIN 버튼
+//		txtpassword.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				int get=0;
+//				try {
+//					get = chatter.sendMSG("LOG/2/"+txtID.getText()+"/"+txtpassword.getText());
+//				} catch (IOException ex) {
+//					ex.printStackTrace();
+//				}
+//
+//				if(get==1) {
+//					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
+//					frame.setVisible(false);
+//					new Square();
+//				}
+//				else if(get==2) {
+//					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
+//				}
+//				else if(get==3) {
+//					JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
+//				}
+//
+//			}
+//		});
 		//계정 생성창 버튼
 		accountbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

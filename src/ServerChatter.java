@@ -76,29 +76,32 @@ class ServerChatter extends Thread{
 
 
    ArrayList<user_info> my_user = (ArrayList<user_info>) objectInputStream.readObject();
-   //user_info object = (user_info) objectInputStream.readObject();
+   user_info object = (user_info) objectInputStream.readObject();
 
    objectInputStream.close();
    String message = "";
    while(!message.equals("bye")){
     System.out.println(id +" 클라이언트가 메세지를 기다립니다.");
     message = br.readLine();   // 받는 부분 인풋 스트림
-    System.out.println("받은 메세지 ==>" + id + ":" + message);
-    messageHand(message, my_user);
+    System.out.println("받은 메세지 ==>"+ message);
+    sendMessage(messageHand(message, my_user));
 
     if(message.equals("bye")){
      room.broadCasting(id+"님이 퇴장하셨습니다.");
     }
-    room.broadCasting(id+" : "+message);
+//    room.broadCasting(id+" : "+message);
    }
   }catch (FileNotFoundException e){
 
   }catch(IOException e){
    System.out.println(e.getMessage());
-   System.out.println("메세지를 수신하여 송신중 예외 발생....");
-  }catch (ClassNotFoundException e){
-
+   System.out.println("메세지를 수신하여 송신중 예외 발생....");}
+  catch (ClassNotFoundException ex) {
+   ex.printStackTrace();
   }
+// }catch (ClassNotFoundException e){
+//
+//  }
   finally{
    room.exitRoom(this);
    close();
@@ -125,7 +128,7 @@ class ServerChatter extends Thread{
    System.out.println("close()..도중 예외 발생!");
   }
  }
- public static void messageHand(String a, ArrayList<user_info> user) {
+ public static String messageHand(String a, ArrayList<user_info> user) {
   //
 
   String oper = "";
@@ -151,8 +154,9 @@ class ServerChatter extends Thread{
      PW = a.substring(0);
 
      System.out.println(is_my_user(user, ID, PW));
-     //serverChatter.sendMSG(is_my_user(user,ID,PW))
-     break;
+     String result = "" + is_my_user(user, ID, PW);
+     return result;
+    //serverChatter.sendMSG(is_my_user(user,ID,PW))
     case "SIGN":
     default:
 
@@ -160,6 +164,7 @@ class ServerChatter extends Thread{
    }
 
   }
+  return "-1";
  }
  public static int is_my_user(ArrayList<user_info> user, String id, String pw){
   for(int a=0;a<user.size();a++){

@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Scanner;
 
 class ClientChatter extends Thread{
  Socket socket;
@@ -12,11 +13,10 @@ class ClientChatter extends Thread{
 
  BufferedReader br;  // 소켓 입력 객체
  PrintWriter pw;   // 소켓 출력 객체
-
+ Scanner sc = new Scanner(System.in);
  public ClientChatter(){
   try{
    socket = new Socket("localhost", 9003);
-
    br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
    pw = new PrintWriter(socket.getOutputStream());
   }catch(Exception e){
@@ -80,18 +80,23 @@ class ClientChatter extends Thread{
 
  public void run(){
   // 입력 기능만 수행하면 된다.
-  try{
-   String msg="";
-   while(!msg.equals("bye")){
-    msg = br.readLine();
-    System.out.println(msg);
-   }
-  }catch(Exception e){
-   System.out.println(e.getMessage());
-   System.out.println("쓰레드에서 예외 발생....");
-  }finally{
-   close();
-  }
+//  try{
+//   String msg="";
+//   while(true) {
+//    msg = sc.nextLine();
+//    int result = sendMSG(msg);
+//    System.out.println(result);
+////   while(!msg.equals("bye")){
+////    msg = br.readLine();
+////    System.out.println(msg);
+////   }
+//   }
+//  }catch(Exception e){
+//   System.out.println(e.getMessage());
+//   System.out.println("쓰레드에서 예외 발생....");
+//  }finally{
+//   close();
+//  }
  }
 
 
@@ -100,11 +105,13 @@ class ClientChatter extends Thread{
   try {
    pw.println(message);
    pw.flush();
-   String serverMSG = br.readLine();
-   return Integer.valueOf(serverMSG);
+   System.out.println("before read");
+   String serverMSG = br.readLine().toString();
+   System.out.println("serverMSG: ");
+   return Integer.parseInt(serverMSG);
   } catch (Exception e) {
    System.out.println(e.getMessage());
-   System.out.println("sendMessage()에서 예외 발생....");
+   System.out.println("sendMSG()에서 예외 발생....");
    return -1;
   }
  }
