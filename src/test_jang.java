@@ -1,6 +1,4 @@
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.ArrayList;
 
 public class test_jang {
@@ -20,12 +18,14 @@ public class test_jang {
 
 
 
-        String test1="log/2/admin1/admin1"; //=  message = br.readLine();
+        String test1="sign/6/ab/b/c/d/e/abcdef@naver.com";
         messageHand(test1, my_user);
+        String test2="dup/1/ab";
+        messageHand(test2, my_user);
 
 
     }
-    public static void messageHand(String a, ArrayList<user_info> user){
+    public static void messageHand(String a, ArrayList<user_info> user) throws IOException {
         //
 
         String oper = "";
@@ -39,12 +39,18 @@ public class test_jang {
         a = a.substring(bg+1);
 
 
+        String ID ="";
+        String PW ="";
+        String NAME ="";
+        String NICK ="";
+        String EMAIL ="";
+        String SNS ="";
+        String CONTENT ="";
 
         switch (oper){
             case "log":
-                System.out.println("in?");
-                String ID ="";
-                String PW ="";
+                //System.out.println("in?");
+
                 bg= a.indexOf("/");
                 ID =a.substring(0,bg);
                 a = a.substring(bg+1);
@@ -53,8 +59,67 @@ public class test_jang {
 
                 System.out.println(is_my_user(user,ID,PW));
                 //serverChatter.sendMSG(is_my_user(user,ID,PW))
+
                 break;
-            case "SIGN":
+            case "sign":
+                bg= a.indexOf("/");
+                ID =a.substring(0,bg);
+                a = a.substring(bg+1);
+
+                bg= a.indexOf("/");
+                PW =a.substring(0,bg);
+                a = a.substring(bg+1);
+
+                bg= a.indexOf("/");
+                NAME =a.substring(0,bg);
+                a = a.substring(bg+1);
+
+                bg= a.indexOf("/");
+                NICK =a.substring(0,bg);
+                a = a.substring(bg+1);
+
+                if(num=="5"){
+
+                    EMAIL =a.substring(0);
+                }
+                else {
+                    bg= a.indexOf("/");
+                    EMAIL =a.substring(0,bg);
+                    a = a.substring(bg+1);
+                    SNS = a.substring(0);
+                }
+                FileOutputStream fileStream = new FileOutputStream("./user_test.dat"); //파일 저장 위치
+
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileStream);
+
+
+                user_info sample= new user_info(ID,PW,NAME,NICK,EMAIL,SNS);
+                System.out.println(1);
+                user.add(sample);
+                //serverChatter.sendMSG(1);
+                objectOutputStream.writeObject(user);
+
+                objectOutputStream.close();
+
+
+                break;
+            case "dup":
+                //   admin
+                ID =a.substring(0);
+                is_dup(user,ID);
+                System.out.println(is_dup(user,ID));
+
+
+                break;
+            case "all":
+                bg= a.indexOf("/");
+                NICK =a.substring(0,bg);
+                a = a.substring(bg+1);
+
+                CONTENT=a.substring(0);
+                System.out.println("\n"+NICK+": "+CONTENT);
+
+                break;
             default:
                 break;
         }
@@ -65,17 +130,32 @@ public class test_jang {
         //
         //}
     }
-    public static int is_my_user(ArrayList<user_info> user, String id, String pw){
-        for(int a=0;a<user.size();a++){
+    public static int is_my_user(ArrayList<user_info> user, String id, String pw) {
+        for (int a = 0; a < user.size(); a++) {
             user_info temp = user.get(a);
-            if(temp.ID.compareTo(id)==0){
-                if(temp.PW.compareTo(pw)==0){
-                    return 1;
-                }
-                else
+            if (temp.ID.compareTo(id) == 0) {
+                if (temp.PW.compareTo(pw) == 0) {
+                    return 1;//비번 확인
+                } else
                     return 3;
+
             }
         }
         return 2;
+    }
+
+    //중복확인//
+    public static int is_dup(ArrayList<user_info> user, String id){
+        for(int a=0;a<user.size();a++){
+            user_info temp=user.get(a);
+            if(temp.ID.compareTo(id)==0){
+                return 1; //아이디가 같아요
+            }
+        }
+        return 0; //달라요
+
+    }
+    public static void all(){
+
     }
 }
