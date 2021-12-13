@@ -76,6 +76,7 @@ class ClientChatter extends Thread{
   }
  }
 
+
  public void run(){
   // 입력 기능만 수행하면 된다.
   try{
