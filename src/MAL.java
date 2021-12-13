@@ -2,7 +2,7 @@ class MAL {
     int player;
     int type;
     POS pos;
-    boolean highlighted; //í”Œë ˆì´ì–´ê°€ ë§ì„ ì„ íƒí•˜ë©´ ì´ë™ ê°€ëŠ¥í•œ ì¹¸ì´ í•˜ì´ë¼ì´íŠ¸ ë˜ëŠ”ë° ì´ ì—¬ë¶€ë¥¼ ë°˜í™˜
+    boolean highlighted; //ÇÃ·¹ÀÌ¾î°¡ ¸»À» ¼±ÅÃÇÏ¸é ÀÌµ¿ °¡´ÉÇÑ Ä­ÀÌ ÇÏÀÌ¶óÀÌÆ® µÇ´Âµ¥ ÀÌ ¿©ºÎ¸¦ ¹İÈ¯
 
     MAL(int player, int type, POS pos, boolean highlighted) {
         this.player = player;

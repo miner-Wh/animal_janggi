@@ -5,18 +5,18 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 
-// ì†Œì¼“ì„ ì´ìš©í•˜ì—¬ í´ë¼ì´ì–¸íŠ¸ 1ê°œì™€ ì§ì ‘ ì—°ê²°ë˜ì–´ ìˆë‹¤.
-// ArrayList<> ì¸ chatters ì— ì†Œì†ë˜ì–´ìˆëŠ” ë˜ë‹¤ë¥¸ ì†Œì¼“ê³¼ ë°ì´íƒ€ë¥¼ ì£¼ê³ ë°›ëŠ” ì“°ë˜ë“œ í´ë˜ìŠ¤
+// ¼ÒÄÏÀ» ÀÌ¿ëÇÏ¿© Å¬¶óÀÌ¾ğÆ® 1°³¿Í Á÷Á¢ ¿¬°áµÇ¾î ÀÖ´Ù.
+// ArrayList<> ÀÎ chatters ¿¡ ¼Ò¼ÓµÇ¾îÀÖ´Â ¶Ç´Ù¸¥ ¼ÒÄÏ°ú µ¥ÀÌÅ¸¸¦ ÁÖ°í¹Ş´Â ¾²·¡µå Å¬·¡½º
 class ServerChatter extends Thread{
- // í´ë¼ì´ì–¸íŠ¸ì™€ ì§ì ‘ ì—°ê²°ë˜ì–´ ìˆëŠ” ì†Œì¼“
+ // Å¬¶óÀÌ¾ğÆ®¿Í Á÷Á¢ ¿¬°áµÇ¾î ÀÖ´Â ¼ÒÄÏ
  Socket socket;
- BufferedReader br; // ì†Œì¼“ìœ¼ë¡œë¶€í„°ì˜ ìµœì¢… ì…ë ¥ ìŠ¤íŠ¸ë¦¼
- PrintWriter pw;  // ì†Œì¼“ìœ¼ë¡œë¶€í„°ì˜ ìµœì¢… ì¶œë ¥ ìŠ¤íŠ¸ë¦¼
+ BufferedReader br; // ¼ÒÄÏÀ¸·ÎºÎÅÍÀÇ ÃÖÁ¾ ÀÔ·Â ½ºÆ®¸²
+ PrintWriter pw;  // ¼ÒÄÏÀ¸·ÎºÎÅÍÀÇ ÃÖÁ¾ Ãâ·Â ½ºÆ®¸²
 
- // í˜„ì¬ ì„œë²„ì— ì ‘ì†ëœ ì „ì²´ í´ë¼ì´ì–¸íŠ¸ ì •ë³´ê°€ ì €ì¥ë˜ì–´ ìˆë‹¤.
+ // ÇöÀç ¼­¹ö¿¡ Á¢¼ÓµÈ ÀüÃ¼ Å¬¶óÀÌ¾ğÆ® Á¤º¸°¡ ÀúÀåµÇ¾î ÀÖ´Ù.
  ArrayList<ServerChatter> chatters;
 
- String id; // ì•„ì´ë””(ë³„ì¹­)--> ëŒ€í™”ë©”ì„¸ì§€ì— ë³´ì—¬ì§ˆ id(ëŒ€í™”ëª…) ==> ë¡œê·¸ì¸ì²˜ë¦¬ì— ì˜í•´ êµ¬í•¨
+ String id; // ¾ÆÀÌµğ(º°Äª)--> ´ëÈ­¸Ş¼¼Áö¿¡ º¸¿©Áú id(´ëÈ­¸í) ==> ·Î±×ÀÎÃ³¸®¿¡ ÀÇÇØ ±¸ÇÔ
  boolean isLogin;
  ChatRoom room;
 
@@ -24,7 +24,7 @@ class ServerChatter extends Thread{
   this.socket = socket;
   this.room = room;
 
-  // ì†Œì¼“ìœ¼ë¡œë¶€í„° ìµœì¢… ì…ì¶œë ¥ ìŠ¤íŠ¸ë¦¼ ì–»ê¸°
+  // ¼ÒÄÏÀ¸·ÎºÎÅÍ ÃÖÁ¾ ÀÔÃâ·Â ½ºÆ®¸² ¾ò±â
   try{
    br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
    pw = new PrintWriter(socket.getOutputStream());
@@ -33,11 +33,11 @@ class ServerChatter extends Thread{
   }
  }
 
- // ëŒ€í™”ëª…ì„ ì…ë ¥ë°›ëŠ” ì²˜ë¦¬ --> í™•ì¥ë˜ì–´ì§€ë©´ ë°ì´íƒ€ë² ì´ìŠ¤ì— id/pass ë¥¼ ê²€ìƒ‰í•˜ì—¬
- //         ë¡œê·¸ì¸ ê¸°ëŠ¥ìœ¼ë¡œ í™•ì¥í•  ìˆ˜ ìˆë‹¤.
+ // ´ëÈ­¸íÀ» ÀÔ·Â¹Ş´Â Ã³¸® --> È®ÀåµÇ¾îÁö¸é µ¥ÀÌÅ¸º£ÀÌ½º¿¡ id/pass ¸¦ °Ë»öÇÏ¿©
+ //         ·Î±×ÀÎ ±â´ÉÀ¸·Î È®ÀåÇÒ ¼ö ÀÖ´Ù.
  public void login(){
 
-  String members[] = {"ë¯¼ìš°í˜","í™ì˜ì •","ì¥ìœ¤ì˜","ê°•ì„±ì—°"}; //ì ‘ì† ê°€ëŠ¥í•œ ì•„ì´ë””ê°€ 4ê°œë§Œ ì¡´ì¬í•œë‹¤ê³  ê°€ì •í•œë‹¤.
+  String members[] = {"¹Î¿ìÇõ","È«ÀÇÁ¤","ÀåÀ±¿µ","°­¼º¿¬"}; //Á¢¼Ó °¡´ÉÇÑ ¾ÆÀÌµğ°¡ 4°³¸¸ Á¸ÀçÇÑ´Ù°í °¡Á¤ÇÑ´Ù.
   String tempId = null;
 
   try{
@@ -54,52 +54,52 @@ class ServerChatter extends Thread{
      this.id = tempId;
      this.isLogin = true;
      sendMessage("ok");
-     System.out.println("ì„œë²„ - ë¡œê·¸ì¸ ì´ë¦„ í™•ì¸");
+     System.out.println("¼­¹ö - ·Î±×ÀÎ ÀÌ¸§ È®ÀÎ");
      break;
     }
     else {
      sendMessage("error");
-     System.out.println("ì„œë²„ - ë¡œê·¸ì¸ ì´ë¦„ XXX");
+     System.out.println("¼­¹ö - ·Î±×ÀÎ ÀÌ¸§ XXX");
     }
    }
   }catch(IOException e){
    System.out.println(e.getMessage());
-   System.out.println("login()ì²˜ë¦¬ì—ì„œ ì˜ˆì™¸ ë°œìƒ.....");
+   System.out.println("login()Ã³¸®¿¡¼­ ¿¹¿Ü ¹ß»ı.....");
   }
  }
 
 
  public void run(){
-  login();  //ë¡œê·¸ì¸ ì²˜ë¦¬
-  if(!isLogin){return;} //chatters ì—ì„œ ìì‹ ì„ ì œê±°í•˜ê³  ì†Œì¼“ì„ ë‹«ëŠ”ë‹¤.
+  login();  //·Î±×ÀÎ Ã³¸®
+  if(!isLogin){return;} //chatters ¿¡¼­ ÀÚ½ÅÀ» Á¦°ÅÇÏ°í ¼ÒÄÏÀ» ´İ´Â´Ù.
   try{
    String message = "";
    while(!message.equals("bye")){
-    System.out.println(id +" í´ë¼ì´ì–¸íŠ¸ê°€ ë©”ì„¸ì§€ë¥¼ ê¸°ë‹¤ë¦½ë‹ˆë‹¤.");
+    System.out.println(id +" Å¬¶óÀÌ¾ğÆ®°¡ ¸Ş¼¼Áö¸¦ ±â´Ù¸³´Ï´Ù.");
     message = br.readLine();
-    System.out.println("ë°›ì€ ë©”ì„¸ì§€ ==>" + id + ":" + message);
+    System.out.println("¹ŞÀº ¸Ş¼¼Áö ==>" + id + ":" + message);
 
     if(message.equals("bye")){
-     room.broadCasting(id+"ë‹˜ì´ í‡´ì¥í•˜ì…¨ìŠµë‹ˆë‹¤.");}
+     room.broadCasting(id+"´ÔÀÌ ÅğÀåÇÏ¼Ì½À´Ï´Ù.");}
     room.broadCasting(id+" : "+message);
    }
   }catch(IOException e){
    System.out.println(e.getMessage());
-   System.out.println("ë©”ì„¸ì§€ë¥¼ ìˆ˜ì‹ í•˜ì—¬ ì†¡ì‹ ì¤‘ ì˜ˆì™¸ ë°œìƒ....");
+   System.out.println("¸Ş¼¼Áö¸¦ ¼ö½ÅÇÏ¿© ¼Û½ÅÁß ¿¹¿Ü ¹ß»ı....");
   }finally{
    room.exitRoom(this);
    close();
-   System.out.println("ì—°ê²°ì„ ë‹«ê³  ì“°ë ˆë“œ ì¢…ë£Œ....");
+   System.out.println("¿¬°áÀ» ´İ°í ¾²·¹µå Á¾·á....");
   }
  }
- //ë©”ì„¸ì§€ë¥¼ ë³´ë‚´ëŠ” ë©”ì†Œë“œ
+ //¸Ş¼¼Áö¸¦ º¸³»´Â ¸Ş¼Òµå
  void sendMessage(String message){
   try{
    pw.println(message);
    pw.flush();
   }catch(Exception e){
    System.out.println(e.getMessage());
-   System.out.println("sendMessage()ì—ì„œ ì˜ˆì™¸ ë°œìƒ....");
+   System.out.println("sendMessage()¿¡¼­ ¿¹¿Ü ¹ß»ı....");
   }
  }
 
@@ -109,7 +109,7 @@ class ServerChatter extends Thread{
    pw.close();
    socket.close();
   }catch(Exception e){
-   System.out.println("close()..ë„ì¤‘ ì˜ˆì™¸ ë°œìƒ!");
+   System.out.println("close()..µµÁß ¿¹¿Ü ¹ß»ı!");
   }
  }
 }

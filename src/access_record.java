@@ -5,7 +5,7 @@ import java.time.LocalTime;
 
 public class access_record implements Serializable {
     List<String> record;
-    //ì ‘ì† ê¸°ë¡ì„ ë¦¬ìŠ¤íŠ¸ ì–´ë ˆì´ í˜•ì‹ìœ¼ë¡œ ì €ì¥
+    //Á¢¼Ó ±â·ÏÀ» ¸®½ºÆ® ¾î·¹ÀÌ Çü½ÄÀ¸·Î ÀúÀå
 
     access_record() {
         record = new ArrayList<String>();
@@ -13,11 +13,11 @@ public class access_record implements Serializable {
         LocalTime nowt = LocalTime.now();
 
         record.add(now.toString() + "  " + nowt.toString() + " created");
-        //ìƒì„± ë ë•Œì˜ ê¸°ë¡
+        //»ı¼º µÉ¶§ÀÇ ±â·Ï
 
     }
 
-    //login ì¸ì§€ ì•„ë‹Œì§€ ë°›ì•„ì„œ ê¸°ë¡
+    //login ÀÎÁö ¾Æ´ÑÁö ¹Ş¾Æ¼­ ±â·Ï
     public void addRecord(boolean is_login) {
         LocalDate now = LocalDate.now();
         LocalTime nowt = LocalTime.now();
@@ -32,6 +32,6 @@ public class access_record implements Serializable {
 
     public List<String> getRecord() {
         return record;
-        //ê¸°ë¡ì˜ ì–´ë ˆì´ ë¦¬ìŠ¤íŠ¸
+        //±â·ÏÀÇ ¾î·¹ÀÌ ¸®½ºÆ®
     }
 }

@@ -6,8 +6,8 @@ public class Client {
  public static void main(String[] args) {
   ClientChatter chatter = new ClientChatter();
 
-  chatter.login();  // ëŒ€í™”ëª… ì…ë ¥
-  //chatter.ready();  // ëŒ€í™” ì‹œì‘ì„ ê¸°ë‹¤ë¦°ë‹¤.
+  chatter.login();  // ´ëÈ­¸í ÀÔ·Â
+  //chatter.ready();  // ´ëÈ­ ½ÃÀÛÀ» ±â´Ù¸°´Ù.
   chatter.start();
   chatter.chatProcess();
  }

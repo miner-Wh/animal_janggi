@@ -1,4 +1,4 @@
-//ì „ë°˜ì ì¸ ê²Œì„ ì¡°ì‘ë“¤ì„ í•˜ëŠ” í´ë˜ìŠ¤
+//Àü¹İÀûÀÎ °ÔÀÓ Á¶ÀÛµéÀ» ÇÏ´Â Å¬·¡½º
 class GAME {
     static final int NOTHING = 0;
     static final int PLAYER1 = 1;
@@ -7,12 +7,12 @@ class GAME {
     static final int BOARD = 0;
     static final int HAVING = 1;
 
-    static final int Wang = 0;//ì™•
-    static final int Sang = 1;//ìƒ
-    static final int Jang = 2;//ì¥
-    static final int Ja = 3;//ì
-    static final int Hu = 4;//í›„
-    static final int Mu = 5;//ë¬´(ë¹ˆì¹¸)
+    static final int Wang = 0;//¿Õ
+    static final int Sang = 1;//»ó
+    static final int Jang = 2;//Àå
+    static final int Ja = 3;//ÀÚ
+    static final int Hu = 4;//ÈÄ
+    static final int Mu = 5;//¹«(ºóÄ­)
 
     static final int SELECTED = 1;
     static final int MOVED = 2;
@@ -36,7 +36,7 @@ class GAME {
     GAME() {
         init_game();
     }
-    //ê²Œì„ ë‚´ë¶€ ì„¤ì •ë“¤ì„ ì´ˆê¸°í™”
+    //°ÔÀÓ ³»ºÎ ¼³Á¤µéÀ» ÃÊ±âÈ­
     void init_game() {
         this.turn = PLAYER1;
         this.state = 0;
@@ -59,21 +59,21 @@ class GAME {
         this.board[3][1] = new MAL(PLAYER1, Wang, new POS(BOARD, 3, 1), false);
         this.board[3][2] = new MAL(PLAYER1, Jang, new POS(BOARD, 3, 2), false);
     }
-    //ë§ì„ ì˜®ê¸¸ ì°¨ë¡€ë¥¼ ì„¤ì •
+    //¸»À» ¿Å±æ Â÷·Ê¸¦ ¼³Á¤
     void set_turn(int player) {
         this.turn = player;
     }
-    //returnì€ MAL[4][3] í˜„ì¬ ë³´ë“œì •ë³´ë¥¼ ë°˜í™˜í•œë‹¤ ë³´ë“œ ì •ë³´ëŠ” MALê°ì²´ ë°°ì—´ë¡œ ë°˜í™˜ë¨
+    //returnÀº MAL[4][3] ÇöÀç º¸µåÁ¤º¸¸¦ ¹İÈ¯ÇÑ´Ù º¸µå Á¤º¸´Â MAL°´Ã¼ ¹è¿­·Î ¹İÈ¯µÊ
     MAL[][] get_board() {
         return this.board;
     }
-    //returnì€ array(MAL) playerê°€ ë”´ ë§ì„ ì €ì¥í•œ ë°°ì—´ì„ ë°˜í™˜
+    //returnÀº array(MAL) player°¡ µı ¸»À» ÀúÀåÇÑ ¹è¿­À» ¹İÈ¯
     MAL[] get_having(int player) {
         if (player == PLAYER1) return this.player1;
         else if (player == PLAYER2) return this.player2;
         return null;
     }
-    //return ë¬´íš¨í•œ ì…ë ¥ì—ëŠ” NOTHING(=0), ë§ì´ ì„ íƒë˜ë©´ SELECTED(=1), ë§ì´ ì˜®ê²¨ì§€ë©´ MOVED(=2)ë°˜í™˜
+    //return ¹«È¿ÇÑ ÀÔ·Â¿¡´Â NOTHING(=0), ¸»ÀÌ ¼±ÅÃµÇ¸é SELECTED(=1), ¸»ÀÌ ¿Å°ÜÁö¸é MOVED(=2)¹İÈ¯
     int button_click(int player, POS pos) {
         if (player != this.turn) return 0;
         if (pos.from == HAVING) {

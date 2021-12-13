@@ -1,28 +1,28 @@
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import com.sun.tools.javac.Main;
 
+import javax.swing.*;
+import java.awt.*;
 
-public class test2  {
+public class UI_user_infor {
+    private JPanel User_info;
+    private JButton editButton;
+    private JTextField whyuk47TextField;
+    private JTextField minnerTextField;
+    private JTextField ¹Î¿ìÇõTextField;
+    private JTextField whyuk7545GmailComTextField;
+    private JTextField kakaoWhyuk47TextField;
+    private JTextField a24TextField;
+    private JButton exitButton;
+    private JButton goAccessButton;
 
-    @SuppressWarnings({ "rawtypes", "unchecked", "nls" })
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        System.out.println("so happy");
-
-        FileInputStream fileStream = new FileInputStream("./user_test.dat");
-
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileStream);
-
-
-
-        user_info object = (user_info) objectInputStream.readObject();
-
-        objectInputStream.close();
-
-        System.out.println(object.email);
-
-
-
-
+    public static void main(String args[]) {
+        JFrame frame = new JFrame("user_infor");
+        frame.setContentPane(new UI_user_infor().User_info);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
     }
+
+
+
 }
