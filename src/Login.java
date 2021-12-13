@@ -15,9 +15,11 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.io.IOException;
 
 public class Login {
 	ClientChatter chatter = new ClientChatter();
+
 	boolean check1 =false;
 	private JFrame frame;
 	private JTextField txtCreateID;
@@ -31,8 +33,10 @@ public class Login {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+
 				try {
 					Login window = new Login();
 					window.frame.setVisible(true);
@@ -54,6 +58,9 @@ public class Login {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+//		chatter.login();
+//		chatter.ready();
+
 
 		frame = new JFrame();
 		frame.setBackground(Color.WHITE);
@@ -193,7 +200,13 @@ public class Login {
 				if(check1) {
 
 					int get =0;
-					//get = sendMSG("SING/6/new_id/new_password/new_name/new_nickname/new_mail/new_sns");
+
+					try {
+						get = chatter.sendMSG("SING/6"+"/"+new_id+"/"+new_password+"/"+new_name+"/"+new_nickname+"/"+new_mail+"/"+new_sns);
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+
 					if(get ==0){
 						JOptionPane.showMessageDialog(null,"계정이 생성되었습니다.");
 
@@ -224,7 +237,12 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 
 				int get=0;
-				get = chatter.sendMSG("DUP/1/"+txtCreateID.getText());
+
+				try {
+					get = chatter.sendMSG("DUP/1/"+txtCreateID.getText());
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
 
 
 				if(get==0) {
@@ -284,7 +302,15 @@ public class Login {
 		logbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int get=0;
-				//get=sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
+				//System.out.println("전전");
+				try {
+					get = chatter.sendMSG("log/2/"+txtID.getText()+"/"+txtpassword.getText());
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+				//System.out.println("전");
+				System.out.println(get);
+				//System.out.println("후");
 
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
@@ -346,7 +372,12 @@ public class Login {
 		logbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int get=0;
-				//get=sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
+
+				try {
+					get = chatter.sendMSG("log/2/"+txtID.getText()+"/"+txtpassword.getText());
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
 
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
@@ -362,46 +393,54 @@ public class Login {
 
 			}
 		});
-		//LOGIN 버튼
-		txtID.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int get=0;
-				//get=sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
-
-				if(get==1) {
-					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
-					frame.setVisible(false);
-					new Square();
-				}
-				else if(get==2) {
-					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
-				}
-				else if(get==3) {
-					JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
-				}
-
-			}
-		});
-		//LOGIN 버튼
-		txtpassword.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int get=0;
-				//get=sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
-
-				if(get==1) {
-					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
-					frame.setVisible(false);
-					new Square();
-				}
-				else if(get==2) {
-					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
-				}
-				else if(get==3) {
-					JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
-				}
-
-			}
-		});
+//		//LOGIN 버튼
+//		txtID.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				int get=0;
+//				try {
+//					get = chatter.sendMSG("log/2/"+txtID.getText()+"/"+txtpassword.getText());
+//				} catch (IOException ex) {
+//					ex.printStackTrace();
+//				}
+//
+//				if(get==1) {
+//					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
+//					frame.setVisible(false);
+//					new Square();
+//				}
+//				else if(get==2) {
+//					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
+//				}
+//				else if(get==3) {
+//					JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
+//				}
+//
+//			}
+//		});
+//		//LOGIN 버튼
+//		txtpassword.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				int get=0;
+//				try {
+//					get = chatter.sendMSG("log/2/"+txtID.getText()+"/"+txtpassword.getText());
+//				} catch (IOException ex) {
+//					ex.printStackTrace();
+//				}
+//
+//				if(get==1) {
+//					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
+//					frame.setVisible(false);
+//					new Square();
+//				}
+//				else if(get==2) {
+//					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
+//				}
+//				else if(get==3) {
+//					JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
+//				}
+//
+//			}
+//		});
 		//계정 생성창 버튼
 		accountbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -76,19 +76,24 @@ class ServerChatter extends Thread{
 
 
    ArrayList<user_info> my_user = (ArrayList<user_info>) objectInputStream.readObject();
-   //user_info object = (user_info) objectInputStream.readObject();
+
 
    objectInputStream.close();
    String message = "";
+   System.out.println("in2");
    while(!message.equals("bye")){
+
+    System.out.println("in3");
     System.out.println(id +" 클라이언트가 메세지를 기다립니다.");
     message = br.readLine();   // 받는 부분 인풋 스트림
+    System.out.println("in4");
+    System.out.println(message);
     System.out.println("받은 메세지 ==>" + id + ":" + message);
     messageHand(message, my_user);
 
     if(message.equals("bye")){
      room.broadCasting(id+"님이 퇴장하셨습니다.");}
-    room.broadCasting(id+" : "+message);
+
    }
   }catch (FileNotFoundException e){
 
@@ -107,6 +112,7 @@ class ServerChatter extends Thread{
  //메세지를 보내는 메소드
  void sendMessage(String message){
   try{
+   System.out.println("sever chatter sendMessage is run");
    pw.println(message);
    pw.flush();
   }catch(Exception e){
@@ -124,7 +130,7 @@ class ServerChatter extends Thread{
    System.out.println("close()..도중 예외 발생!");
   }
  }
- public static void messageHand(String a, ArrayList<user_info> user){
+ public void messageHand(String a, ArrayList<user_info> user){
   //
 
   String oper = "";
@@ -151,7 +157,7 @@ class ServerChatter extends Thread{
     PW =a.substring(0);
 
     System.out.println(is_my_user(user,ID,PW));
-    //serverChatter.sendMSG(is_my_user(user,ID,PW))
+    sendMessage(is_my_user(user,ID,PW));
     break;
    case "SIGN":
    default:
@@ -164,17 +170,17 @@ class ServerChatter extends Thread{
   //
   //}
  }
- public static int is_my_user(ArrayList<user_info> user, String id, String pw){
+ public static String is_my_user(ArrayList<user_info> user, String id, String pw){
   for(int a=0;a<user.size();a++){
    user_info temp = user.get(a);
    if(temp.ID.compareTo(id)==0){
     if(temp.PW.compareTo(pw)==0){
-     return 1;
+     return "1";
     }
     else
-     return 3;
+     return "3";
    }
   }
-  return 2;
+  return "2";
  }
 }

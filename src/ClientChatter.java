@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -94,9 +95,19 @@ class ClientChatter extends Thread{
  }
 
 
- public int sendMSG(String msg){
-  pw.println(msg);
-  return 0;
+ public int sendMSG(String message) throws IOException {
+  try {
+   pw.println(message);
+   pw.flush();
+   System.out.println("before read");
+   String serverMSG = br.readLine();
+   System.out.println("serverMSG: "+serverMSG);
+   return Integer.parseInt(serverMSG);
+  } catch (Exception e) {
+   System.out.println(e.getMessage());
+   System.out.println("sendMSG()에서 예외 발생....");
+   return -1;
+  }
  }
 
  public void close(){
