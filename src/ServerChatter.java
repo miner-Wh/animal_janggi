@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -73,20 +70,40 @@ class ServerChatter extends Thread{
 
 
   try{
+   FileInputStream fileStream = new FileInputStream("./user_test.dat");
+
+   ObjectInputStream objectInputStream = new ObjectInputStream(fileStream);
+
+
+   ArrayList<user_info> my_user = (ArrayList<user_info>) objectInputStream.readObject();
+
+
+   objectInputStream.close();
    String message = "";
+   System.out.println("in2");
    while(!message.equals("bye")){
+
+    System.out.println("in3");
     System.out.println(id +" 클라이언트가 메세지를 기다립니다.");
     message = br.readLine();   // 받는 부분 인풋 스트림
+    System.out.println("in4");
+    System.out.println(message);
     System.out.println("받은 메세지 ==>" + id + ":" + message);
+    messageHand(message, my_user);
 
     if(message.equals("bye")){
      room.broadCasting(id+"님이 퇴장하셨습니다.");}
-    room.broadCasting(id+" : "+message);
+
    }
+  }catch (FileNotFoundException e){
+
   }catch(IOException e){
    System.out.println(e.getMessage());
    System.out.println("메세지를 수신하여 송신중 예외 발생....");
-  }finally{
+  }catch (ClassNotFoundException e){
+
+  }
+  finally{
    room.exitRoom(this);
    close();
    System.out.println("연결을 닫고 쓰레드 종료....");
@@ -95,6 +112,7 @@ class ServerChatter extends Thread{
  //메세지를 보내는 메소드
  void sendMessage(String message){
   try{
+   System.out.println("sever chatter sendMessage is run");
    pw.println(message);
    pw.flush();
   }catch(Exception e){
@@ -111,5 +129,58 @@ class ServerChatter extends Thread{
   }catch(Exception e){
    System.out.println("close()..도중 예외 발생!");
   }
+ }
+ public void messageHand(String a, ArrayList<user_info> user){
+  //
+
+  String oper = "";
+  String num = "";
+  int bg = a.indexOf("/");
+  oper = a.substring(0,bg); // 식별자 빼냄
+  a = a.substring(bg+1);
+
+  bg= a.indexOf("/");
+  num = a.substring(0,bg);
+  a = a.substring(bg+1);
+
+
+
+  switch (oper){
+   case "log":
+    System.out.println("in?");
+    String ID ="";
+    String PW ="";
+    bg= a.indexOf("/");
+    ID =a.substring(0,bg);
+    a = a.substring(bg+1);
+
+    PW =a.substring(0);
+
+    System.out.println(is_my_user(user,ID,PW));
+    sendMessage(is_my_user(user,ID,PW));
+    break;
+   case "SIGN":
+   default:
+    break;
+  }
+
+
+
+  //for(int n=0;n<Integer.valueOf(num);n++){
+  //
+  //}
+ }
+ public static String is_my_user(ArrayList<user_info> user, String id, String pw){
+  for(int a=0;a<user.size();a++){
+   user_info temp = user.get(a);
+   if(temp.ID.compareTo(id)==0){
+    if(temp.PW.compareTo(pw)==0){
+     return "1";
+    }
+    else
+     return "3";
+   }
+  }
+  return "2";
  }
 }
