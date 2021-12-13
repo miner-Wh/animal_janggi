@@ -6,7 +6,6 @@ public class Client {
  public static void main(String[] args) {
   ClientChatter chatter = new ClientChatter();
   chatter.start();
-  chatter.sendMSG("@@@");
 
 
 

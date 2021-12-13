@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.io.IOException;
 
 public class Login {
 	ClientChatter chatter = new ClientChatter();
@@ -54,6 +55,8 @@ public class Login {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+//		chatter.login();
+//		chatter.ready();
 
 		frame = new JFrame();
 		frame.setBackground(Color.WHITE);
@@ -224,7 +227,11 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 
 				int get=0;
-				get = chatter.sendMSG("DUP/1/"+txtCreateID.getText());
+				try {
+					get = chatter.sendMSG("DUP/1/"+txtCreateID.getText());
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
 
 
 				if(get==0) {
@@ -284,7 +291,11 @@ public class Login {
 		logbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int get=0;
-				//get=sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
+				try {
+					get= chatter.sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
 
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
@@ -346,7 +357,11 @@ public class Login {
 		logbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int get=0;
-				//get=sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
+				try {
+					get = chatter.sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
 
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
@@ -366,7 +381,11 @@ public class Login {
 		txtID.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int get=0;
-				//get=sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
+				try {
+					get = chatter.sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
 
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
@@ -386,7 +405,11 @@ public class Login {
 		txtpassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int get=0;
-				//get=sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
+				try {
+					get = chatter.sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
 
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");

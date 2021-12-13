@@ -87,7 +87,8 @@ class ServerChatter extends Thread{
     messageHand(message, my_user);
 
     if(message.equals("bye")){
-     room.broadCasting(id+"님이 퇴장하셨습니다.");}
+     room.broadCasting(id+"님이 퇴장하셨습니다.");
+    }
     room.broadCasting(id+" : "+message);
    }
   }catch (FileNotFoundException e){
@@ -124,45 +125,41 @@ class ServerChatter extends Thread{
    System.out.println("close()..도중 예외 발생!");
   }
  }
- public static void messageHand(String a, ArrayList<user_info> user){
+ public static void messageHand(String a, ArrayList<user_info> user) {
   //
 
   String oper = "";
   String num = "";
   int bg = a.indexOf("/");
-  oper = a.substring(0,bg); // 식별자 빼냄
-  a = a.substring(bg+1);
+  if (bg != -1) {
+   oper = a.substring(0, bg); // 식별자 빼냄
+   a = a.substring(bg + 1);
 
-  bg= a.indexOf("/");
-  num = a.substring(0,bg);
-  a = a.substring(bg+1);
+   bg = a.indexOf("/");
+   num = a.substring(0, bg);
+   a = a.substring(bg + 1);
 
+   switch (oper) {
+    case "log":
+     System.out.println("in?");
+     String ID = "";
+     String PW = "";
+     bg = a.indexOf("/");
+     ID = a.substring(0, bg);
+     a = a.substring(bg + 1);
 
+     PW = a.substring(0);
 
-  switch (oper){
-   case "log":
-    System.out.println("in?");
-    String ID ="";
-    String PW ="";
-    bg= a.indexOf("/");
-    ID =a.substring(0,bg);
-    a = a.substring(bg+1);
+     System.out.println(is_my_user(user, ID, PW));
+     //serverChatter.sendMSG(is_my_user(user,ID,PW))
+     break;
+    case "SIGN":
+    default:
 
-    PW =a.substring(0);
+     break;
+   }
 
-    System.out.println(is_my_user(user,ID,PW));
-    //serverChatter.sendMSG(is_my_user(user,ID,PW))
-    break;
-   case "SIGN":
-   default:
-    break;
   }
-
-
-
-  //for(int n=0;n<Integer.valueOf(num);n++){
-  //
-  //}
  }
  public static int is_my_user(ArrayList<user_info> user, String id, String pw){
   for(int a=0;a<user.size();a++){
