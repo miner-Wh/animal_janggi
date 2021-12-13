@@ -19,6 +19,7 @@ import java.io.IOException;
 
 public class Login {
 	ClientChatter chatter = new ClientChatter();
+
 	boolean check1 =false;
 	private JFrame frame;
 	private JTextField txtCreateID;
@@ -32,8 +33,10 @@ public class Login {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+
 				try {
 					Login window = new Login();
 					window.frame.setVisible(true);
@@ -57,6 +60,7 @@ public class Login {
 	private void initialize() {
 //		chatter.login();
 //		chatter.ready();
+
 
 		frame = new JFrame();
 		frame.setBackground(Color.WHITE);
@@ -196,7 +200,13 @@ public class Login {
 				if(check1) {
 
 					int get =0;
-					//get = sendMSG("SING/6/new_id/new_password/new_name/new_nickname/new_mail/new_sns");
+
+					try {
+						get = chatter.sendMSG("SING/6"+"/"+new_id+"/"+new_password+"/"+new_name+"/"+new_nickname+"/"+new_mail+"/"+new_sns);
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+
 					if(get ==0){
 						JOptionPane.showMessageDialog(null,"계정이 생성되었습니다.");
 
@@ -227,6 +237,7 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 
 				int get=0;
+
 				try {
 					get = chatter.sendMSG("DUP/1/"+txtCreateID.getText());
 				} catch (IOException ex) {
@@ -291,12 +302,15 @@ public class Login {
 		logbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int get=0;
+				//System.out.println("전전");
 				try {
-					get = chatter.sendMSG("LOG/2/"+txtID.getText()+"/"+txtpassword.getText());
-					System.out.println(get);
+					get = chatter.sendMSG("log/2/"+txtID.getText()+"/"+txtpassword.getText());
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
+				//System.out.println("전");
+				System.out.println(get);
+				//System.out.println("후");
 
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
@@ -358,8 +372,9 @@ public class Login {
 		logbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int get=0;
+
 				try {
-					get = chatter.sendMSG("LOG/2/"+txtID.getText()+"/"+txtpassword.getText());
+					get = chatter.sendMSG("log/2/"+txtID.getText()+"/"+txtpassword.getText());
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
@@ -383,7 +398,7 @@ public class Login {
 //			public void actionPerformed(ActionEvent e) {
 //				int get=0;
 //				try {
-//					get = chatter.sendMSG("LOG/2/"+txtID.getText()+"/"+txtpassword.getText());
+//					get = chatter.sendMSG("log/2/"+txtID.getText()+"/"+txtpassword.getText());
 //				} catch (IOException ex) {
 //					ex.printStackTrace();
 //				}
@@ -407,7 +422,7 @@ public class Login {
 //			public void actionPerformed(ActionEvent e) {
 //				int get=0;
 //				try {
-//					get = chatter.sendMSG("LOG/2/"+txtID.getText()+"/"+txtpassword.getText());
+//					get = chatter.sendMSG("log/2/"+txtID.getText()+"/"+txtpassword.getText());
 //				} catch (IOException ex) {
 //					ex.printStackTrace();
 //				}
