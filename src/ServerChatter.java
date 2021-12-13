@@ -220,12 +220,19 @@ class ServerChatter extends Thread{
 
     break;
    case "all":
-    bg= a.indexOf("/");
-    NICK =a.substring(0,bg);
-    a = a.substring(bg+1);
+    System.out.println("inALL");
 
-    CONTENT=a.substring(0);
-    System.out.println("\n"+NICK+": "+CONTENT);
+    sendMessage("13");
+    String allMSG = br.readLine();
+    room.broadCasting(allMSG);
+
+//    bg= a.indexOf("/");
+//
+//    NICK =a.substring(0,bg);
+//    a = a.substring(bg+1);
+//
+//    CONTENT=a.substring(0);
+//    System.out.println("\n"+NICK+": "+CONTENT);
 
     break;
    default:

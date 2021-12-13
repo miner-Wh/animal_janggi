@@ -79,19 +79,19 @@ class ClientChatter extends Thread{
 
 
  public void run(){
-  // 입력 기능만 수행하면 된다.
-  try{
-   String msg="";
-   while(!msg.equals("bye")){
-    msg = br.readLine();
-    System.out.println(msg);
-   }
-  }catch(Exception e){
-   System.out.println(e.getMessage());
-   System.out.println("쓰레드에서 예외 발생....");
-  }finally{
-   close();
-  }
+//  // 입력 기능만 수행하면 된다.
+//  try{
+//   String msg="";
+//   while(!msg.equals("bye")){
+//    msg = br.readLine();
+//    System.out.println(msg);
+//   }
+//  }catch(Exception e){
+//   System.out.println(e.getMessage());
+//   System.out.println("쓰레드에서 예외 발생....");
+//  }finally{
+//   close();
+//  }
  }
 
 
