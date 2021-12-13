@@ -6,32 +6,32 @@ public class Server {
 
  public static void main(String[] args) {
 
-  // ¼­¹ö¼ÒÄÏ °´Ã¼ ¼±¾ğ
+  // ì„œë²„ì†Œì¼“ ê°ì²´ ì„ ì–¸
   ServerSocket serverSocket = null;
   Socket socket = null;
 
-  //Ã¤ÆÃ·ë °´Ã¼ »ı¼º
-  ChatRoom room = new ChatRoom("Web & ½º¸¶Æ®Æù");
+  //ì±„íŒ…ë£¸ ê°ì²´ ìƒì„±
+  ChatRoom room = new ChatRoom("Web & ìŠ¤ë§ˆíŠ¸í°");
 
-  //Å¬¶óÀÌ¾ğÆ® ¿¬°á ÀÓ½Ã °´Ã¼
+  //í´ë¼ì´ì–¸íŠ¸ ì—°ê²° ì„ì‹œ ê°ì²´
   ServerChatter chatter = null;
   try{
-   // ¼­¹ö¼ÒÄÏ »ı¼º
+   // ì„œë²„ì†Œì¼“ ìƒì„±
    serverSocket = new ServerSocket(9003);
    while(true){
     room.display();
 
-    System.out.println("***********Å¬¶óÀÌ¾ğÆ® Á¢¼Ó ´ë±âÁß*************");
+    System.out.println("***********í´ë¼ì´ì–¸íŠ¸ ì ‘ì† ëŒ€ê¸°ì¤‘*************");
 
     socket = serverSocket.accept();
 
-    // Ã¤ÆÃ °´Ã¼ »ı¼º
+    // ì±„íŒ… ê°ì²´ ìƒì„±
     chatter = new ServerChatter(socket, room);
 
-    //¾²·¹µå ÀÛµ¿½ÃÄÑ 1)·Î±×ÀÎ Ã³¸® 2)Ã¤ÆÃ ½ÃÀÛ
+    //ì“°ë ˆë“œ ì‘ë™ì‹œì¼œ 1)ë¡œê·¸ì¸ ì²˜ë¦¬ 2)ì±„íŒ… ì‹œì‘
     chatter.start();
 
-    // Ã¤ÆÃ °´Ã¼¸¦ ArrayList¿¡ ÀúÀåÇÑ´Ù.
+    // ì±„íŒ… ê°ì²´ë¥¼ ArrayListì— ì €ì¥í•œë‹¤.
     room.enterRoom(chatter);
    }
   }catch(IOException e){

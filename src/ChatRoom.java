@@ -9,8 +9,8 @@ class ChatRoom{
 
  }
  public void display(){
-  System.out.println("ÇöÀç Á¢¼ÓÀÚ Á¤º¸ : Á¢¼ÓÀÚ ¼ö -> " + chatters.size());
-  //ÇöÀç Á¢¼ÓµÈ Á¤º¸ È®ÀÎ - Á¢¼ÓÀÚ¼ö, Á¢¼ÓÀÚ ¾ÆÀÌµð ¸í´Ü
+  System.out.println("í˜„ìž¬ ì ‘ì†ìž ì •ë³´ : ì ‘ì†ìž ìˆ˜ -> " + chatters.size());
+  //í˜„ìž¬ ì ‘ì†ëœ ì •ë³´ í™•ì¸ - ì ‘ì†ìžìˆ˜, ì ‘ì†ìž ì•„ì´ë”” ëª…ë‹¨
   for(int i=0;i<chatters.size();i++){
    System.out.println(chatters.get(i).id);
   }
@@ -18,7 +18,7 @@ class ChatRoom{
  public void enterRoom(ServerChatter chatter){
   chatters.add(chatter);
  }
- //Á¢¼ÓÀÚµé ¸ðµÎ¿¡°Ô ¸Þ¼¼Áö Àü´Þ
+ //ì ‘ì†ìžë“¤ ëª¨ë‘ì—ê²Œ ë©”ì„¸ì§€ ì „ë‹¬
  public void broadCasting(String message){
   ServerChatter chatter = null;
 
@@ -27,14 +27,14 @@ class ChatRoom{
    chatter.sendMessage(message);
   }
  }
- //Ã¤ÆÃ¿¡¼­ ³ª°¥¶§ Ã³¸®
+ //ì±„íŒ…ì—ì„œ ë‚˜ê°ˆë•Œ ì²˜ë¦¬
  public void exitRoom(ServerChatter chatter){
   boolean isDelete = chatters.remove(chatter);
   if( isDelete){
-   System.out.println(chatter.id + " Å¬¶óÀÌ¾ðÆ®¸¦ chatters¿¡¼­ Á¦°ÅÇÔ");
+   System.out.println(chatter.id + " í´ë¼ì´ì–¸íŠ¸ë¥¼ chattersì—ì„œ ì œê±°í•¨");
   }
   else{
-   System.out.println(chatter.id + " Å¬¶óÀÌ¾ðÆ®¸¦ chatters¿¡¼­ Á¦°Å½ÇÆÐ");
+   System.out.println(chatter.id + " í´ë¼ì´ì–¸íŠ¸ë¥¼ chattersì—ì„œ ì œê±°ì‹¤íŒ¨");
   }
  }
 }

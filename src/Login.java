@@ -64,10 +64,10 @@ public class Login {
 		frame.setSize(1200,1200/12*9);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("½ÊÀÌÀå±â");
+		frame.setTitle("ì‹­ì´ì¥ê¸°");
 		frame.getContentPane().setLayout(null);
 		//////////////////////////////////////////////////////////////////////////
-		////////////·Î±×ÀÎ ÆĞ³Î /////////////////////////////////////////////////////
+		////////////ë¡œê·¸ì¸ íŒ¨ë„ /////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////
 		JPanel Loginpage = new JPanel();
 		frame.getContentPane().add(Loginpage);
@@ -79,14 +79,14 @@ public class Login {
 		logbtn.setForeground(SystemColor.window);
 		logbtn.setBackground(SystemColor.activeCaption);
 		JLabel ID = new JLabel("ID");
-		JLabel title = new JLabel("ä¨ì£íâÑ¤");
+		JLabel title = new JLabel("åäºŒå°‡æ£‹");
 		JTextField txtID = new JTextField(20);
 		JLabel password = new JLabel("Password");
 		JPasswordField txtpassword = new JPasswordField(20);
 		JButton accountbtn = new JButton("Crate account");
 
 		//////////////////////////////////////////////////////////////////////////
-		////////////°èÁ¤ »ı¼ºÃ¢/////////////////////////////////////////////////////
+		////////////ê³„ì • ìƒì„±ì°½/////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////
 		JPanel Accountpage = new JPanel();
 		Accountpage.setBackground(new Color(220, 220, 220));
@@ -97,7 +97,7 @@ public class Login {
 
 		JLabel CreateID = new JLabel("ID");
 		CreateID.setHorizontalAlignment(SwingConstants.CENTER);
-		CreateID.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		CreateID.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		CreateID.setBounds(123, 129, 97, 23);
 		Accountpage.add(CreateID);
 
@@ -119,7 +119,7 @@ public class Login {
 
 		JLabel Name = new JLabel("Name");
 		Name.setHorizontalAlignment(SwingConstants.CENTER);
-		Name.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		Name.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		Name.setBounds(123, 79, 97, 23);
 		Accountpage.add(Name);
 
@@ -129,7 +129,7 @@ public class Login {
 
 		JLabel Createpassword = new JLabel("Password");
 		Createpassword.setHorizontalAlignment(SwingConstants.CENTER);
-		Createpassword.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		Createpassword.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		Createpassword.setBounds(123, 230, 97, 23);
 		Accountpage.add(Createpassword);
 
@@ -139,7 +139,7 @@ public class Login {
 
 		JLabel NickName = new JLabel("NickName");
 		NickName.setHorizontalAlignment(SwingConstants.CENTER);
-		NickName.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		NickName.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		NickName.setBounds(123, 275, 97, 23);
 		Accountpage.add(NickName);
 
@@ -149,7 +149,7 @@ public class Login {
 
 		JLabel SNS = new JLabel("SNS");
 		SNS.setHorizontalAlignment(SwingConstants.CENTER);
-		SNS.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		SNS.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		SNS.setBounds(123, 375, 97, 23);
 		Accountpage.add(SNS);
 
@@ -159,7 +159,7 @@ public class Login {
 
 		JLabel Mail = new JLabel("E-MAIL");
 		Mail.setHorizontalAlignment(SwingConstants.CENTER);
-		Mail.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		Mail.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		Mail.setBounds(123, 328, 97, 23);
 		Accountpage.add(Mail);
 
@@ -180,10 +180,10 @@ public class Login {
 		Accountpage.setVisible(false);
 
 
-		//°èÁ¤ »ı¼º¹öÆ° CREATE
+		//ê³„ì • ìƒì„±ë²„íŠ¼ CREATE
 		createbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//»ı¼ºµÈ °èÁ¤ Á¤º¸
+				//ìƒì„±ëœ ê³„ì • ì •ë³´
 				String new_id = txtCreateID.getText();
 				String new_name = txtName.getText();
 				String new_password = txtCreatepassword.getText();
@@ -191,15 +191,15 @@ public class Login {
 				String new_mail = txtMail.getText();
 				String new_nickname = txtNickName.getText();
 				if(check1) {
-					JOptionPane.showMessageDialog(null,"°èÁ¤ÀÌ »ı¼ºµÇ¾ú½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ê³„ì •ì´ ìƒì„±ë˜ì—ˆìŠµë‹ˆë‹¤.");
 					Accountpage.setVisible(false);
 					Loginpage.setVisible(true);}else {
-					JOptionPane.showMessageDialog(null,"¾ÆÀÌµğ Áßº¹È®ÀÎÀ» ÇØÁÖ¼¼¿ä");
+					JOptionPane.showMessageDialog(null,"ì•„ì´ë”” ì¤‘ë³µí™•ì¸ì„ í•´ì£¼ì„¸ìš”");
 				}
 
 			}
 		});
-		//·Î±×ÀÎÃ¢ µ¹¾Æ°¡±â
+		//ë¡œê·¸ì¸ì°½ ëŒì•„ê°€ê¸°
 		back_login.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Accountpage.setVisible(false);
@@ -207,16 +207,16 @@ public class Login {
 
 			}
 		});
-		//Áßº¹È®ÀÎ ¹öÆ°
+		//ì¤‘ë³µí™•ì¸ ë²„íŠ¼
 		duplicatebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String dup_id="gachon";
 
 				if(dup_id.equals(txtCreateID.getText())) {
-					check.setText("»ç¿ë ºÒ°¡´ÉÇÑ IDÀÔ´Ï´Ù.");
+					check.setText("ì‚¬ìš© ë¶ˆê°€ëŠ¥í•œ IDì…ë‹ˆë‹¤.");
 					check1=false;
 				}else{
-					check.setText("»ç¿ë °¡´ÉÇÑ IDÀÔ´Ï´Ù.");
+					check.setText("ì‚¬ìš© ê°€ëŠ¥í•œ IDì…ë‹ˆë‹¤.");
 					check1=true;
 				}
 
@@ -237,11 +237,11 @@ public class Login {
 
 
 		logbtn.setFont(new Font("CentSchbook BT", Font.PLAIN, 26));
-		title.setFont(new Font("ÇÑÄÄ À±°íµñ 240", Font.BOLD, 57));
+		title.setFont(new Font("í•œì»´ ìœ¤ê³ ë”• 240", Font.BOLD, 57));
 		title.setHorizontalAlignment(SwingConstants.CENTER);
-		ID.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		ID.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		ID.setHorizontalAlignment(SwingConstants.CENTER);
-		password.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		password.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		password.setHorizontalAlignment(SwingConstants.CENTER);
 
 
@@ -265,21 +265,21 @@ public class Login {
 		Loginpage.add(accountbtn);
 
 
-		//LOGIN ¹öÆ°
+		//LOGIN ë²„íŠ¼
 		logbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id= "gachon";
 				String pass = "2021";
 
 				if(id.equals(txtID.getText())&&pass.equals(txtpassword.getText())) {
-					JOptionPane.showMessageDialog(null,"·Î±×ÀÎ µÇ¾ú½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				}else {
-					JOptionPane.showMessageDialog(null,"¾ÆÀÌµğ¿Í ºñ¹øÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ì•„ì´ë””ì™€ ë¹„ë²ˆì´ ë§ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 				}
 
 			}
 		});
-		//°èÁ¤ »ı¼ºÃ¢ ¹öÆ°
+		//ê³„ì • ìƒì„±ì°½ ë²„íŠ¼
 		accountbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Accountpage.setVisible(true);
@@ -291,15 +291,15 @@ public class Login {
 
 
 
-		////////·Î±×ÀÎ Á¢¼Ó ÀÛµ¿
+		////////ë¡œê·¸ì¸ ì ‘ì† ì‘ë™
 
 
 		logbtn.setFont(new Font("CentSchbook BT", Font.PLAIN, 26));
-		title.setFont(new Font("ÇÑÄÄ À±°íµñ 240", Font.BOLD, 57));
+		title.setFont(new Font("í•œì»´ ìœ¤ê³ ë”• 240", Font.BOLD, 57));
 		title.setHorizontalAlignment(SwingConstants.CENTER);
-		ID.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		ID.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		ID.setHorizontalAlignment(SwingConstants.CENTER);
-		password.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		password.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		password.setHorizontalAlignment(SwingConstants.CENTER);
 
 
@@ -323,7 +323,7 @@ public class Login {
 		Loginpage.add(accountbtn);
 
 
-		//LOGIN ¹öÆ°
+		//LOGIN ë²„íŠ¼
 		logbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id= "gachon";
@@ -333,14 +333,14 @@ public class Login {
 					frame.setVisible(false);
 					new Square();
 
-					JOptionPane.showMessageDialog(null,"·Î±×ÀÎ µÇ¾ú½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				}else {
-					JOptionPane.showMessageDialog(null,"¾ÆÀÌµğ¿Í ºñ¹øÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ì•„ì´ë””ì™€ ë¹„ë²ˆì´ ë§ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 				}
 
 			}
 		});
-		//LOGIN ¹öÆ°
+		//LOGIN ë²„íŠ¼
 		txtID.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id= "gachon";
@@ -350,14 +350,14 @@ public class Login {
 					frame.setVisible(false);
 					new Square();
 
-					JOptionPane.showMessageDialog(null,"·Î±×ÀÎ µÇ¾ú½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				}else {
-					JOptionPane.showMessageDialog(null,"¾ÆÀÌµğ¿Í ºñ¹øÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ì•„ì´ë””ì™€ ë¹„ë²ˆì´ ë§ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 				}
 
 			}
 		});
-		//LOGIN ¹öÆ°
+		//LOGIN ë²„íŠ¼
 		txtpassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id= "gachon";
@@ -367,14 +367,14 @@ public class Login {
 					frame.setVisible(false);
 					new Square();
 
-					JOptionPane.showMessageDialog(null,"·Î±×ÀÎ µÇ¾ú½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				}else {
-					JOptionPane.showMessageDialog(null,"¾ÆÀÌµğ¿Í ºñ¹øÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ì•„ì´ë””ì™€ ë¹„ë²ˆì´ ë§ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 				}
 
 			}
 		});
-		//°èÁ¤ »ı¼ºÃ¢ ¹öÆ°
+		//ê³„ì • ìƒì„±ì°½ ë²„íŠ¼
 		accountbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Accountpage.setVisible(true);

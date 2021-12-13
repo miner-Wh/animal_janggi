@@ -7,10 +7,10 @@ class ClientChatter extends Thread{
  Socket socket;
  String id;
 
- BufferedReader stdin; // Ç¥ÁØÀÔ·Â°´Ã¼(Å°º¸µå)
+ BufferedReader stdin; // í‘œì¤€ì…ë ¥ê°ì²´(í‚¤ë³´ë“œ)
 
- BufferedReader br;  // ¼ÒÄÏ ÀÔ·Â °´Ã¼
- PrintWriter pw;   // ¼ÒÄÏ Ãâ·Â °´Ã¼
+ BufferedReader br;  // ì†Œì¼“ ì…ë ¥ ê°ì²´
+ PrintWriter pw;   // ì†Œì¼“ ì¶œë ¥ ê°ì²´
 
  public ClientChatter(){
   try{
@@ -20,29 +20,29 @@ class ClientChatter extends Thread{
    pw = new PrintWriter(socket.getOutputStream());
   }catch(Exception e){
    System.out.println(e.getMessage());
-   System.out.println("Socket »ı¼º ¹× i/o stream¾ò±â¿¡¼­ ¿¹¿Ü¹ß»ı..");
-   //¿¹¿Ü¹ß»ı½Ã ´Ù½Ã ½ÇÇàÇÏ´øÁö Á¾·áÇÏ´øÁö Ã³¸®
+   System.out.println("Socket ìƒì„± ë° i/o streamì–»ê¸°ì—ì„œ ì˜ˆì™¸ë°œìƒ..");
+   //ì˜ˆì™¸ë°œìƒì‹œ ë‹¤ì‹œ ì‹¤í–‰í•˜ë˜ì§€ ì¢…ë£Œí•˜ë˜ì§€ ì²˜ë¦¬
   }
  }
 
  public void ready(){
-  // ÀÔ·Â ±â´É¸¸ ¼öÇàÇÏ¸é µÈ´Ù.
+  // ì…ë ¥ ê¸°ëŠ¥ë§Œ ìˆ˜í–‰í•˜ë©´ ëœë‹¤.
   try{
    String  msg = br.readLine();
    System.out.println(msg);
   }catch(Exception e){
    System.out.println(e.getMessage());
-   System.out.println("ready() ¿¡¼­ ¿¹¿Ü ¹ß»ı....");
+   System.out.println("ready() ì—ì„œ ì˜ˆì™¸ ë°œìƒ....");
   }
  }
 
  public void login(){
   try{
-   //·Î±×ÀÎ Ã³¸®
+   //ë¡œê·¸ì¸ ì²˜ë¦¬
    stdin = new BufferedReader(new InputStreamReader(System.in));
    String result;
    do{
-    System.out.print("id¸¦ ÀÔ·ÂÇÏ½Ã¿À ==> ");
+    System.out.print("idë¥¼ ì…ë ¥í•˜ì‹œì˜¤ ==> ");
     id = stdin.readLine();
     pw.println(id);
     pw.flush();
@@ -52,16 +52,16 @@ class ClientChatter extends Thread{
 
   }catch(Exception e){
    System.out.println(e.getMessage());
-   System.out.println("login()Áß ¿¹¿Ü ¹ß»ı....");
+   System.out.println("login()ì¤‘ ì˜ˆì™¸ ë°œìƒ....");
   }
  }
 
  public void chatProcess(){
   try{
-   // Ã¤ÆÃ Ã³¸®
+   // ì±„íŒ… ì²˜ë¦¬
    String msg="";
    while(!msg.equals("bye")){
-    System.out.println("¸Ş¼¼Áö¸¦ ÀÔ·ÂÇÏ½Ã¿À==>");
+    System.out.println("ë©”ì„¸ì§€ë¥¼ ì…ë ¥í•˜ì‹œì˜¤==>");
     msg = stdin.readLine();
     pw.println(msg);
     pw.flush();
@@ -69,15 +69,16 @@ class ClientChatter extends Thread{
 
   }catch(Exception e){
    System.out.println(e.getMessage());
-   System.out.println("¸Ş¼¼Áö¸¦ ÀÔ·Â¹Ş¾Æ Àü¼ÛÁß ¿¹¿Ü ¹ß»ı....");
+   System.out.println("ë©”ì„¸ì§€ë¥¼ ì…ë ¥ë°›ì•„ ì „ì†¡ì¤‘ ì˜ˆì™¸ ë°œìƒ....");
   }finally{
    close();
-   System.out.println("chatProcess() Á¾·á....");
+   System.out.println("chatProcess() ì¢…ë£Œ....");
   }
  }
 
+
  public void run(){
-  // ÀÔ·Â ±â´É¸¸ ¼öÇàÇÏ¸é µÈ´Ù.
+  // ì…ë ¥ ê¸°ëŠ¥ë§Œ ìˆ˜í–‰í•˜ë©´ ëœë‹¤.
   try{
    String msg="";
    while(!msg.equals("bye")){
@@ -86,7 +87,7 @@ class ClientChatter extends Thread{
    }
   }catch(Exception e){
    System.out.println(e.getMessage());
-   System.out.println("¾²·¹µå¿¡¼­ ¿¹¿Ü ¹ß»ı....");
+   System.out.println("ì“°ë ˆë“œì—ì„œ ì˜ˆì™¸ ë°œìƒ....");
   }finally{
    close();
   }

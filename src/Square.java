@@ -62,35 +62,35 @@ public class Square {
 		frame.setPreferredSize(new Dimension(1200, 1200/12*9));
 		frame.setSize(1200,1200/12*9);
 		frame.setLocationRelativeTo(null);
-		frame.setTitle("½ÊÀÌÀå±â");
+		frame.setTitle("ì‹­ì´ì¥ê¸°");
 		frame.getContentPane().setLayout(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//////////////////////////////////////////////////////
-		/////////////////////////////Ã¤ÆÃ ÆĞ³Î
+		/////////////////////////////ì±„íŒ… íŒ¨ë„
 		JPanel chatting = new JPanel();
 		chatting.setBackground(UIManager.getColor("Button.background"));
 		chatting.setBounds(0, 0, 825, 860);
 		frame.getContentPane().add(chatting);
 		chatting.setLayout(null);
 
-		//	Ã¤ÆÃÀÌ º¸ÀÌ´Â ¿µ¿ª
+		//	ì±„íŒ…ì´ ë³´ì´ëŠ” ì˜ì—­
 		JTextArea output = new JTextArea();
 
-		output.setFont(new Font("MD°³¼ºÃ¼", Font.PLAIN, 20));
+		output.setFont(new Font("MDê°œì„±ì²´", Font.PLAIN, 20));
 		output.setBounds(30, 30, 760, 750);
 		output.setBackground(Color.WHITE);
 		output.setEditable(false);
 		chatting.add(output);
 
-		//Ã¤ÆÃÀ» ÀÔ·ÂÇÏ´Â Ä­
+		//ì±„íŒ…ì„ ì…ë ¥í•˜ëŠ” ì¹¸
 		JTextField input = new JTextField(20);
 		input.setBounds(30, 805, 675, 35);
-		input.setText("Ã¤ÆÃÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+		input.setText("ì±„íŒ…ì„ ì…ë ¥í•˜ì„¸ìš”");
 		chatting.add(input);
 
-		//ÀÔ·Â ¹öÆ°
-		JButton input_btn = new JButton("ÀÔ·Â");
+		//ì…ë ¥ ë²„íŠ¼
+		JButton input_btn = new JButton("ì…ë ¥");
 		input_btn.setSize(76, 40);
 		input_btn.setLocation(717, 802);
 		input_btn.setBackground(Color.LIGHT_GRAY);
@@ -127,23 +127,23 @@ public class Square {
 
 
 		//////////////////////////////////////////////////////
-		////////////////// ´ë±â½Ç ÆĞ³Î
+		////////////////// ëŒ€ê¸°ì‹¤ íŒ¨ë„
 		JPanel room_list = new JPanel();
 		room_list.setBackground(UIManager.getColor("Button.background"));
 		room_list.setBounds(825, 37, 359, 520);
 		frame.getContentPane().add(room_list);
 		room_list.setLayout(null);
-		//À¯Àú ¹öÆ°
+		//ìœ ì € ë²„íŠ¼
 		JButton users_btn = new JButton("USERS");
 		users_btn.setBackground(Color.GRAY);
-		users_btn.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		users_btn.setFont(new Font("êµ´ë¦¼", Font.BOLD, 18));
 		users_btn.setBounds(185, 24, 145, 50);
 		users_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		room_list.add(users_btn);
-		//°ÔÀÓ¹æ ¹öÆ°
+		//ê²Œì„ë°© ë²„íŠ¼
 		JButton room_btn = new JButton("ROOM");
 		room_btn.setBackground(Color.LIGHT_GRAY);
-		room_btn.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		room_btn.setFont(new Font("êµ´ë¦¼", Font.BOLD, 18));
 		room_btn.setLocation(41, 24);
 		room_btn.setSize(145, 50);
 		room_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder());
@@ -151,7 +151,7 @@ public class Square {
 
 
 		////////////////////////////////////////////////
-		///////////À¯Àú¸ñ·Ï ÆĞ³Î
+		///////////ìœ ì €ëª©ë¡ íŒ¨ë„
 		JPanel users_list = new JPanel();
 		users_list.setBackground(Color.LIGHT_GRAY);
 		users_list.setBounds(41, 72, 289, 400);
@@ -161,7 +161,7 @@ public class Square {
 		users_list.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 
 		////////////////////////////////////////////////
-		///////////°ÔÀÓ¹æ ÆĞ³Î
+		///////////ê²Œì„ë°© íŒ¨ë„
 		JPanel rooms_list = new JPanel();
 		rooms_list.setBackground(Color.LIGHT_GRAY);
 		rooms_list.setBounds(41, 72, 289, 400);
@@ -173,13 +173,13 @@ public class Square {
 		JButton room1 = new JButton("ROOM 1"+"              "+room1_tmp+" / 2");
 		room1.setBounds(24, 30, 240, 35);
 		rooms_list.add(room1);
-		room1.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		room1.setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		room1.setBackground(Color.LIGHT_GRAY);
 
 		room1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (room1_tmp==2) {
-					JOptionPane.showMessageDialog(null,"¹æ¿¡ Á¢¼ÓÇÒ ¼ö ¾ø½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ë°©ì— ì ‘ì†í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 				}
 			}
 		});
@@ -187,21 +187,21 @@ public class Square {
 		int room2_tmp=0;
 		JButton room2 = new JButton("ROOM 2"+"              "+room2_tmp+" / 2");
 		room2.setBackground(Color.LIGHT_GRAY);
-		room2.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		room2.setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		room2.setBounds(24, 85, 240, 35);
 		rooms_list.add(room2);
 
 		room2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (room2_tmp==2) {
-					JOptionPane.showMessageDialog(null,"¹æ¿¡ Á¢¼ÓÇÒ ¼ö ¾ø½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ë°©ì— ì ‘ì†í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 				}
 			}
 		});
 
 		int room3_tmp=0;
 		JButton room3 = new JButton("ROOM 3"+"              "+room3_tmp+" / 2");
-		room3.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		room3.setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		room3.setBounds(24, 140, 240, 35);
 		room3.setBackground(Color.LIGHT_GRAY);
 		rooms_list.add(room3);
@@ -209,7 +209,7 @@ public class Square {
 		room3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (room3_tmp==2) {
-					JOptionPane.showMessageDialog(null,"¹æ¿¡ Á¢¼ÓÇÒ ¼ö ¾ø½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ë°©ì— ì ‘ì†í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 				}
 			}
 		});
@@ -218,7 +218,7 @@ public class Square {
 
 		int room4_tmp=2;
 		JButton room4 = new JButton("ROOM 4"+"              "+room4_tmp+" / 2");
-		room4.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		room4.setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		room4.setBounds(24, 195, 240, 35);
 
 		room4.setBackground(Color.LIGHT_GRAY);
@@ -227,50 +227,50 @@ public class Square {
 		room4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (room4_tmp==2) {
-					JOptionPane.showMessageDialog(null,"¹æ¿¡ Á¢¼ÓÇÒ ¼ö ¾ø½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ë°©ì— ì ‘ì†í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 				}
 			}
 		});
 
 
 		//////////////////////////////////////////////
-		/////////³»Á¤º¸ ÆĞ³Î/////////////////////////////
+		/////////ë‚´ì •ë³´ íŒ¨ë„/////////////////////////////
 		//////////////////////////////////////////////
 		JPanel user_info = new JPanel();
 		user_info.setBounds(866, 556, 289, 280);
 		user_info.setLayout(null);
 		user_info.setBorder((new LineBorder(Color.LIGHT_GRAY,4)));
 		frame.getContentPane().add(user_info);
-		//ÀÎÆ÷ Å¸ÀÌÆ²
+		//ì¸í¬ íƒ€ì´í‹€
 		JTextField info_title = new JTextField("User info");
 		info_title.setEditable(false);
 		info_title.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		info_title.setHorizontalAlignment(SwingConstants.CENTER);
-		info_title.setFont(new Font("±¼¸²", Font.BOLD, 20));
+		info_title.setFont(new Font("êµ´ë¦¼", Font.BOLD, 20));
 		info_title.setBounds(12, 37, 157, 29);
 		user_info.add(info_title);
-		//ÀÎÆ÷ ¾ÆÀÌµğ
+		//ì¸í¬ ì•„ì´ë””
 		JTextField info_ID = new JTextField("ID : ");
 		info_ID.setEditable(false);
 		info_ID.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		info_ID.setFont(new Font("±¼¸²", Font.BOLD, 20));
+		info_ID.setFont(new Font("êµ´ë¦¼", Font.BOLD, 20));
 		info_ID.setBounds(49, 101, 157, 29);
 		user_info.add(info_ID);
-		//ÀÎÆ÷ ´Ğ³×ÀÓ
+		//ì¸í¬ ë‹‰ë„¤ì„
 		JTextField info_NIC = new JTextField("Player~~~");
 		info_NIC.setEditable(false);
 		info_NIC.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		info_NIC.setFont(new Font("±¼¸²", Font.BOLD, 20));
+		info_NIC.setFont(new Font("êµ´ë¦¼", Font.BOLD, 20));
 		info_NIC.setBounds(49, 140, 157, 29);
 		user_info.add(info_NIC);
-		//ÀüÀû
+		//ì „ì 
 		JTextField info_WIN = new JTextField("WIN : ");
 		info_WIN.setEditable(false);
 		info_WIN.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		info_WIN.setFont(new Font("±¼¸²", Font.BOLD, 20));
+		info_WIN.setFont(new Font("êµ´ë¦¼", Font.BOLD, 20));
 		info_WIN.setBounds(49, 179, 157, 29);
 		user_info.add(info_WIN);
-		//»ó¼¼Á¤º¸
+		//ìƒì„¸ì •ë³´
 		JButton more = new JButton("more ->");
 		more.setForeground(Color.BLUE);
 		more.setBackground(new Color(240,240,240));
@@ -286,7 +286,7 @@ public class Square {
 
 
 
-		//°ÔÀÓ¹æ ¹öÆ°µ¿ÀÛ
+		//ê²Œì„ë°© ë²„íŠ¼ë™ì‘
 		room_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				room_btn.setBackground(Color.LIGHT_GRAY);
@@ -297,7 +297,7 @@ public class Square {
 			}
 		});
 
-		//À¯Àú¹æ ¹öÆ°µ¿ÀÛ
+		//ìœ ì €ë°© ë²„íŠ¼ë™ì‘
 		users_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				users_btn.setBackground(Color.LIGHT_GRAY);

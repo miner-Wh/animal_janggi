@@ -11,7 +11,7 @@ public class GUI_user_info extends JFrame {
         c.add(new JLabel("ID "));
         c.add(new JTextField("whyuk47",20));
         c.add(new JLabel("name "));
-        c.add(new JTextField("πŒøÏ«ı",20));
+        c.add(new JTextField("ÎØºÏö∞ÌòÅ",20));
         c.add(new JLabel("nick "));
         c.add(new JTextField("Minner",20));
         c.add(new JLabel("email "));
@@ -19,7 +19,7 @@ public class GUI_user_info extends JFrame {
         c.add(new JLabel("sns "));
         c.add(new JTextField("Null",20));
         c.add(new JLabel("game_record"));
-        c.add(new JTextField("5Ω¬ 5∆–",20));
+        c.add(new JTextField("5Ïäπ 5Ìå®",20));
 
         setSize(300,150);
         setVisible(true);

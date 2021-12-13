@@ -8,7 +8,7 @@ public class UI_user_infor {
     private JButton editButton;
     private JTextField whyuk47TextField;
     private JTextField minnerTextField;
-    private JTextField ¹Î¿ìÇõTextField;
+    private JTextField ë¯¼ìš°í˜TextField;
     private JTextField whyuk7545GmailComTextField;
     private JTextField kakaoWhyuk47TextField;
     private JTextField a24TextField;
