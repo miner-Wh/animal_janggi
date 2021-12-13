@@ -17,7 +17,7 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 public class Login {
-
+	ClientChatter chatter = new ClientChatter();
 	boolean check1 =false;
 	private JFrame frame;
 	private JTextField txtCreateID;
@@ -224,7 +224,7 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 
 				int get=0;
-				// get = sendMSG("DUP/1/"+txtCreateID.getText());
+				get = chatter.sendMSG("DUP/1/"+txtCreateID.getText());
 
 
 				if(get==0) {
@@ -410,6 +410,7 @@ public class Login {
 
 			}
 		});
+
 
 
 

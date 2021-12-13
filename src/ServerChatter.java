@@ -70,13 +70,13 @@ class ServerChatter extends Thread{
 
 
  public void run(){
-  login();  //로그인 처리
-  if(!isLogin){return;} //chatters 에서 자신을 제거하고 소켓을 닫는다.
+
+
   try{
    String message = "";
    while(!message.equals("bye")){
     System.out.println(id +" 클라이언트가 메세지를 기다립니다.");
-    message = br.readLine();
+    message = br.readLine();   // 받는 부분 인풋 스트림
     System.out.println("받은 메세지 ==>" + id + ":" + message);
 
     if(message.equals("bye")){
