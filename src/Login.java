@@ -15,11 +15,11 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.SystemColor;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 
 public class Login {
 	ClientChatter chatter = new ClientChatter();
-
 	boolean check1 =false;
 	private JFrame frame;
 	private JTextField txtCreateID;
@@ -28,6 +28,10 @@ public class Login {
 	private JTextField txtNickName;
 	private JTextField txtSNS;
 	private JTextField txtMail;
+	public String ids;
+	public String pws;
+
+
 
 	/**
 	 * Launch the application.
@@ -372,20 +376,21 @@ public class Login {
 		logbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int get=0;
+				ids = txtID.getText();
+				pws = txtpassword.getText();
 
 				try {
-					get = chatter.sendMSG("log/2/"+txtID.getText()+"/"+txtpassword.getText());
+					get = chatter.sendMSG("log/2/"+ids+"/"+pws);
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
 
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
+
+
+
 					frame.setVisible(false);
-					///
-					//chatter.sendMSG("myin/")
-					///
-					user_info myInfo = new user_info();
 					new Square();
 
 				}

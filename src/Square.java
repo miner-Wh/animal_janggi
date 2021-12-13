@@ -56,7 +56,9 @@ public class Square extends Login{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		System.out.println(ids+"\n"+pws);
 		ClientChatter chatter = super.chatter;
+
 		frame = new JFrame();
 		frame.setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 450, 300);
@@ -266,20 +268,21 @@ public class Square extends Login{
 		user_info.add(info_title);
 		//인포 아이디
 		JTextField info_ID = new JTextField("ID : ");
+
 		info_ID.setEditable(false);
 		info_ID.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		info_ID.setFont(new Font("굴림", Font.BOLD, 20));
 		info_ID.setBounds(49, 101, 157, 29);
 		user_info.add(info_ID);
 		//인포 닉네임
-		JTextField info_NIC = new JTextField("Player~~~");
+		JTextField info_NIC = new JTextField("");
 		info_NIC.setEditable(false);
 		info_NIC.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		info_NIC.setFont(new Font("굴림", Font.BOLD, 20));
 		info_NIC.setBounds(49, 140, 157, 29);
 		user_info.add(info_NIC);
 		//전적
-		JTextField info_WIN = new JTextField("WIN : ");
+		JTextField info_WIN = new JTextField("");
 		info_WIN.setEditable(false);
 		info_WIN.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		info_WIN.setFont(new Font("굴림", Font.BOLD, 20));

@@ -16,7 +16,7 @@ public class test2  {
 
 
         ArrayList<user_info> is_my_user = (ArrayList<user_info>) objectInputStream.readObject();
-        //user_info object = (user_info) objectInputStream.readObject();
+
 
         objectInputStream.close();
 
