@@ -1,23 +1,10 @@
-import java.awt.Dimension;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.SystemColor;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class Login {
+public class Login2 {
 	ClientChatter chatter = new ClientChatter();
 
 	boolean check1 =false;
@@ -38,7 +25,7 @@ public class Login {
 			public void run() {
 
 				try {
-					Login window = new Login();
+					Login2 window = new Login2();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +37,7 @@ public class Login {
 	/**
 	 * Create the application.
 	 */
-	public Login() {
+	public Login2() {
 		initialize();
 	}
 
@@ -382,12 +369,7 @@ public class Login {
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
 					frame.setVisible(false);
-					///
-					//chatter.sendMSG("myin/")
-					///
-//					user_info myInfo = new user_info();
 					new Square();
-
 				}
 				else if(get==2) {
 					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
