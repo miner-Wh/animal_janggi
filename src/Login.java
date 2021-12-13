@@ -191,9 +191,21 @@ public class Login {
 				String new_mail = txtMail.getText();
 				String new_nickname = txtNickName.getText();
 				if(check1) {
-					JOptionPane.showMessageDialog(null,"계정이 생성되었습니다.");
-					Accountpage.setVisible(false);
-					Loginpage.setVisible(true);}else {
+
+					int get =0;
+					//get = sendMSG("SING/6/new_id/new_password/new_name/new_nickname/new_mail/new_sns");
+					if(get ==0){
+						JOptionPane.showMessageDialog(null,"계정이 생성되었습니다.");
+
+						Accountpage.setVisible(false);
+						Loginpage.setVisible(true);
+					}
+					else{
+						JOptionPane.showMessageDialog(null,"아이디 중복확인을 해주세요");
+					}
+
+				}
+				else {
 					JOptionPane.showMessageDialog(null,"아이디 중복확인을 해주세요");
 				}
 
@@ -210,9 +222,12 @@ public class Login {
 		//중복확인 버튼
 		duplicatebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String dup_id="gachon";
 
-				if(dup_id.equals(txtCreateID.getText())) {
+				int get=0;
+				// get = sendMSG("DUP/1/"+txtCreateID.getText());
+
+
+				if(get==0) {
 					check.setText("사용 불가능한 ID입니다.");
 					check1=false;
 				}else{
@@ -268,12 +283,16 @@ public class Login {
 		//LOGIN 버튼
 		logbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String id= "gachon";
-				String pass = "2021";
+				int get=0;
+				//get=sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
 
-				if(id.equals(txtID.getText())&&pass.equals(txtpassword.getText())) {
+				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
-				}else {
+				}
+				else if(get==2) {
+					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
+				}
+				else if(get==3) {
 					JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
 				}
 
@@ -326,15 +345,18 @@ public class Login {
 		//LOGIN 버튼
 		logbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String id= "gachon";
-				String pass = "2021";
+				int get=0;
+				//get=sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
 
-				if(id.equals(txtID.getText())&&pass.equals(txtpassword.getText())) {
+				if(get==1) {
+					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
 					frame.setVisible(false);
 					new Square();
-
-					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
-				}else {
+				}
+				else if(get==2) {
+					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
+				}
+				else if(get==3) {
 					JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
 				}
 
@@ -343,15 +365,18 @@ public class Login {
 		//LOGIN 버튼
 		txtID.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String id= "gachon";
-				String pass = "2021";
+				int get=0;
+				//get=sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
 
-				if(id.equals(txtID.getText())&&pass.equals(txtpassword.getText())) {
+				if(get==1) {
+					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
 					frame.setVisible(false);
 					new Square();
-
-					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
-				}else {
+				}
+				else if(get==2) {
+					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
+				}
+				else if(get==3) {
 					JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
 				}
 
@@ -360,15 +385,18 @@ public class Login {
 		//LOGIN 버튼
 		txtpassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String id= "gachon";
-				String pass = "2021";
+				int get=0;
+				//get=sendMSG("LOG/1/"+txtID.getText()+"/"+txtpassword.getText());
 
-				if(id.equals(txtID.getText())&&pass.equals(txtpassword.getText())) {
+				if(get==1) {
+					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
 					frame.setVisible(false);
 					new Square();
-
-					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
-				}else {
+				}
+				else if(get==2) {
+					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
+				}
+				else if(get==3) {
 					JOptionPane.showMessageDialog(null,"아이디와 비번이 맞지 않습니다.");
 				}
 
