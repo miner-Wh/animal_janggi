@@ -8,7 +8,7 @@ public class test {
 
     @SuppressWarnings({ "rawtypes", "unchecked", "nls" })
     public static void main(String[] args) throws IOException {
-
+        System.out.println("test!");
         FileOutputStream fileStream = new FileOutputStream("./user_test.dat"); //파일 저장 위치
 
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileStream);

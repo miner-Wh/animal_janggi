@@ -75,7 +75,7 @@ class ServerChatter extends Thread{
    ObjectInputStream objectInputStream = new ObjectInputStream(fileStream);
 
 
-   ArrayList<user_info> my_user = (ArrayList<user_info>) objectInputStream.readObject();
+   ArrayList<user_info> my_user = (ArrayList<user_info>)objectInputStream.readObject();
 
 
    objectInputStream.close();
