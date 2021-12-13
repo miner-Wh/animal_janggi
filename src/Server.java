@@ -13,7 +13,7 @@ public class Server {
   //채팅룸 객체 생성
   ChatRoom room = new ChatRoom("Square");
 
-  //클라이언트 연결 임시 객체
+  //클라이언트 연결 임시 객체Login
   ServerChatter chatter = null;
   try{
    // 서버소켓 생성

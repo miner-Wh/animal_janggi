@@ -1,5 +1,6 @@
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.io.IOException;
 import java.time.LocalTime;
 import javax.swing.JFrame;
 import javax.swing.border.*;
@@ -21,7 +22,8 @@ import javax.swing.UIManager;
 import java.awt.GridLayout;
 
 
-public class Square {
+public class Square extends Login{
+
 
 	String chat_tmp;
 
@@ -54,6 +56,7 @@ public class Square {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		ClientChatter chatter = super.chatter;
 		frame = new JFrame();
 		frame.setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 450, 300);
@@ -97,6 +100,13 @@ public class Square {
 		input.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chat_tmp = input.getText();
+
+				try {
+					chatter.sendMSG("all/1/"+chat_tmp);
+
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
 				LocalTime now = LocalTime.now();
 				output.append(" >>> "+chat_tmp+"     "+now.getHour()+":"+now.getMinute()+":"+now.getSecond()+"\n");
 				input.setText("");
@@ -107,6 +117,11 @@ public class Square {
 		input_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chat_tmp = input.getText();
+				try {
+					chatter.sendMSG("all/1/"+chat_tmp);
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
 				LocalTime now = LocalTime.now();
 				output.append(" >>> "+chat_tmp+"     "+now.getHour()+":"+now.getMinute()+":"+now.getSecond()+"\n");
 				input.setText("");

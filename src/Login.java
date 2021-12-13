@@ -382,7 +382,12 @@ public class Login {
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
 					frame.setVisible(false);
+					///
+					//chatter.sendMSG("myin/")
+					///
+					user_info myInfo = new user_info();
 					new Square();
+
 				}
 				else if(get==2) {
 					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");
