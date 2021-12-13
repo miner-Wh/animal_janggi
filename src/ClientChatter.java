@@ -93,6 +93,12 @@ class ClientChatter extends Thread{
   }
  }
 
+
+ public int sendMSG(String msg){
+  pw.println(msg);
+  return 0;
+ }
+
  public void close(){
   try{
    br.close();

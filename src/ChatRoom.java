@@ -3,6 +3,7 @@ import java.util.ArrayList;
 class ChatRoom{
  ArrayList<ServerChatter> chatters = new ArrayList<ServerChatter>();
 
+
  String name;
  public ChatRoom(String name){
   this.name = name;

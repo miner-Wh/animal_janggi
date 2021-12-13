@@ -11,7 +11,7 @@ public class Server {
   Socket socket = null;
 
   //채팅룸 객체 생성
-  ChatRoom room = new ChatRoom("Web & 스마트폰");
+  ChatRoom room = new ChatRoom("Square");
 
   //클라이언트 연결 임시 객체
   ServerChatter chatter = null;
