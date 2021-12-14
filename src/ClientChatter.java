@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 
 class ClientChatter extends Thread{
  Socket socket;
@@ -145,6 +146,24 @@ class ClientChatter extends Thread{
    }
 
    System.out.println("serverMSG: "+serverMSG);
+   return serverMSG;
+  } catch (Exception e) {
+   System.out.println(e.getMessage());
+   System.out.println("sendMSG()에서 예외 발생....");
+   return null;
+  }
+ }
+ public ArrayList<String> sendMSG_u(String message) throws IOException {
+  try {
+   pw.println(message);
+   pw.flush();
+   System.out.println("before read");
+   int num_u = Integer.parseInt(br.readLine());
+   ArrayList<String> serverMSG =new ArrayList<>();
+   for(int un=0;un<num_u;un++){
+    serverMSG.add( br.readLine());
+   }
+
    return serverMSG;
   } catch (Exception e) {
    System.out.println(e.getMessage());

@@ -1,9 +1,6 @@
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.time.LocalTime;
 import javax.swing.JFrame;
 import javax.swing.border.*;
@@ -68,7 +65,7 @@ public class Square extends Login{
 		String myID=id;
 
 		try {
-			myID = chatter.sendMSG_s("myin/1/saddas");
+			myID = chatter.sendMSG_s("myin/1/"+id);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -273,47 +270,48 @@ public class Square extends Login{
 		//rooms_list.setLayout(null);
 		//rooms_list.setVisible(true);
 		//rooms_list.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		/*
-		int room1_tmp=0;
-		JButton room1 = new JButton("ROOM 1"+"              "+room1_tmp+" / 2");
-		room1.setBounds(24, 30, 240, 35);
-		rooms_list.add(room1);
-		room1.setFont(new Font("굴림", Font.BOLD, 15));
-		room1.setBackground(Color.LIGHT_GRAY);
 
-		room1.addActionListener(new ActionListener() {
+		int user1_tmp=0;
+		JButton user1 = new JButton("ROOM 1"+"              "+user1_tmp+" / 2");
+		user1.setBounds(24, 30, 240, 35);
+		users_list.add(user1);
+		user1.setFont(new Font("굴림", Font.BOLD, 15));
+		user1.setBackground(Color.LIGHT_GRAY);
+
+		user1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (room1_tmp==2) {
+				if (user1_tmp==2) {
 					JOptionPane.showMessageDialog(null,"방에 접속할 수 없습니다.");
 				}
 			}
 		});
 
-		int room2_tmp=0;
-		JButton room2 = new JButton("ROOM 2"+"              "+room2_tmp+" / 2");
-		room2.setBackground(Color.LIGHT_GRAY);
-		room2.setFont(new Font("굴림", Font.BOLD, 15));
-		room2.setBounds(24, 85, 240, 35);
-		rooms_list.add(room2);
+		int user2_tmp=0;
+		JButton user2 = new JButton("ROOM 2"+"              "+user2_tmp+" / 2");
+		user2.setBackground(Color.LIGHT_GRAY);
+		user2.setFont(new Font("굴림", Font.BOLD, 15));
+		user2.setBounds(24, 85, 240, 35);
+		users_list.add(user2);
 
-		room2.addActionListener(new ActionListener() {
+
+		user2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (room2_tmp==2) {
+				if (user2_tmp==2) {
 					JOptionPane.showMessageDialog(null,"방에 접속할 수 없습니다.");
 				}
 			}
 		});
 
-		int room3_tmp=0;
-		JButton room3 = new JButton("ROOM 3"+"              "+room3_tmp+" / 2");
-		room3.setFont(new Font("굴림", Font.BOLD, 15));
-		room3.setBounds(24, 140, 240, 35);
-		room3.setBackground(Color.LIGHT_GRAY);
-		rooms_list.add(room3);
+		int user3_tmp=0;
+		JButton user3 = new JButton("ROOM 3"+"              "+user3_tmp+" / 2");
+		user3.setFont(new Font("굴림", Font.BOLD, 15));
+		user3.setBounds(24, 140, 240, 35);
+		user3.setBackground(Color.LIGHT_GRAY);
+		users_list.add(user3);
 
-		room3.addActionListener(new ActionListener() {
+		user3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (room3_tmp==2) {
+				if (user3_tmp==2) {
 					JOptionPane.showMessageDialog(null,"방에 접속할 수 없습니다.");
 				}
 			}
@@ -321,23 +319,62 @@ public class Square extends Login{
 
 
 
-		int room4_tmp=2;
-		JButton room4 = new JButton("ROOM 4"+"              "+room4_tmp+" / 2");
-		room4.setFont(new Font("굴림", Font.BOLD, 15));
-		room4.setBounds(24, 195, 240, 35);
+		int user4_tmp=2;
+		JButton user4 = new JButton("ROOM 4"+"              "+user4_tmp+" / 2");
+		user4.setFont(new Font("굴림", Font.BOLD, 15));
+		user4.setBounds(24, 195, 240, 35);
 
-		room4.setBackground(Color.LIGHT_GRAY);
-		rooms_list.add(room4);
+		user4.setBackground(Color.LIGHT_GRAY);
+		users_list.add(user4);
 
-		room4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (room4_tmp==2) {
-					JOptionPane.showMessageDialog(null,"방에 접속할 수 없습니다.");
-				}
+		int user5_tmp=2;
+		JButton user5 = new JButton("ROOM 4"+"              "+user5_tmp+" / 2");
+		user5.setFont(new Font("굴림", Font.BOLD, 15));
+		user5.setBounds(24, 250, 240, 35);
+
+		user5.setBackground(Color.LIGHT_GRAY);
+		users_list.add(user5);
+
+		int user6_tmp=2;
+		JButton user6 = new JButton("ROOM 4"+"              "+user6_tmp+" / 2");
+		user6.setFont(new Font("굴림", Font.BOLD, 15));
+		user6.setBounds(24, 305, 240, 35);
+
+		user6.setBackground(Color.LIGHT_GRAY);
+		users_list.add(user6);
+
+		user1.setVisible(false);
+		user2.setVisible(false);
+		user3.setVisible(false);
+		user4.setVisible(false);
+		user5.setVisible(false);
+		user6.setVisible(false);
+
+		ArrayList<JButton> ULA = new ArrayList<>();
+		ULA.add(user1);
+		ULA.add(user2);
+		ULA.add(user3);
+		ULA.add(user4);
+		ULA.add(user5);
+		ULA.add(user6);
+		ArrayList<String> temp_i=new ArrayList<>();
+		try {
+			temp_i = chatter.sendMSG_u("alluser/1/aasdasd");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		for(int un=0;un<temp_i.size();un++){
+			if(un >= 7){
+				break;
 			}
-		});
+			ULA.get(un).setVisible(true);
+			ULA.get(un).setText(temp_i.get(un));
+		}
 
-*/
+
+
+
+
 		//////////////////////////////////////////////
 		/////////내정보 패널/////////////////////////////
 		//////////////////////////////////////////////
@@ -428,10 +465,21 @@ public class Square extends Login{
 		//유저방 버튼동작
 		users_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				users_btn.setBackground(Color.LIGHT_GRAY);
-				//room_btn.setBackground(Color.GRAY);
-				//rooms_list.setVisible(false);
-				users_list.setVisible(true);
+
+				ArrayList<String> temp =new ArrayList<>();
+				try {
+					temp = chatter.sendMSG_u("alluser/1/aasdasd");
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+				for(int un=0;un<temp.size();un++){
+					if(un >= 7){
+						break;
+					}
+					ULA.get(un).setVisible(true);
+					ULA.get(un).setText(temp.get(un));
+				}
+
 			}
 		});
 	}

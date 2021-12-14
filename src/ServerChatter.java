@@ -172,7 +172,7 @@ class ServerChatter extends Thread{
 
     System.out.println(is_my_user(user,ID,PW));
     sendMessage(is_my_user(user,ID,PW));
-    c_id ="ID";
+
 
     break;
    case "sign":
@@ -211,6 +211,7 @@ class ServerChatter extends Thread{
     System.out.println(1);
     user.add(sample);
     sendMessage("1");
+
     objectOutputStream.writeObject(user);
 
     objectOutputStream.close();
@@ -220,6 +221,7 @@ class ServerChatter extends Thread{
    case "myin":
 
     System.out.println(c_id);
+    c_id = a.substring(0);
 
     sendMessage(c_id);
 
@@ -261,6 +263,19 @@ class ServerChatter extends Thread{
     break;
    case "ref" :
     sendMessage(AML+"END");
+    break;
+   case "alluser":
+    ArrayList<String> users = new ArrayList<>();
+    for(int rc=0;rc<room.chatters.size();rc++){
+     users.add(room.chatters.get(rc).c_id);
+    }
+    sendMessage(""+room.chatters.size());
+    for(int rc=0;rc<users.size();rc++){
+     sendMessage(users.get(rc));
+     System.out.println(users.get(rc));
+    }
+
+    break;
 
 
     //case ref/1/weqwe
