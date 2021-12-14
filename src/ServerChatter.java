@@ -10,7 +10,7 @@ class ServerChatter extends Thread{
  BufferedReader br; // 소켓으로부터의 최종 입력 스트림
  PrintWriter pw;  // 소켓으로부터의 최종 출력 스트림
 
-
+ String AML;
  // 현재 서버에 접속된 전체 클라이언트 정보가 저장되어 있다.
  ArrayList<ServerChatter> chatters;
  String c_id;
@@ -69,6 +69,12 @@ class ServerChatter extends Thread{
 
  public void run(){
   String c_id="";
+  AML ="";
+  if(room.chatters.get(0) != null){
+   AML = room.chatters.get(0).AML;
+  }
+  System.out.println("초기 전쳇"+AML);
+
   try{
    FileInputStream fileStream = new FileInputStream("./user_test.dat");
 
@@ -166,7 +172,7 @@ class ServerChatter extends Thread{
 
     System.out.println(is_my_user(user,ID,PW));
     sendMessage(is_my_user(user,ID,PW));
-    c_id ="ID";
+
 
     break;
    case "sign":
@@ -205,6 +211,7 @@ class ServerChatter extends Thread{
     System.out.println(1);
     user.add(sample);
     sendMessage("1");
+
     objectOutputStream.writeObject(user);
 
     objectOutputStream.close();
@@ -214,6 +221,7 @@ class ServerChatter extends Thread{
    case "myin":
 
     System.out.println(c_id);
+    c_id = a.substring(0);
 
     sendMessage(c_id);
 
@@ -232,9 +240,17 @@ class ServerChatter extends Thread{
    case "all":
     System.out.println("inALL");
 
-    sendMessage("13");
-    String allMSG = br.readLine();
-    room.broadCasting(allMSG);
+    bg= a.indexOf("/");
+    NICK =a.substring(0,bg);
+    a = a.substring(bg+1);
+
+    String allMSG = a;
+    AML+= NICK+": "+allMSG+"\n";
+    for(int rc=0;rc<room.chatters.size();rc++){
+     room.chatters.get(rc).AML = AML;
+    }
+    sendMessage("4");
+    //for(룸 내의 모든 server chatter의 전체체팅 this.전체 체팅
 
 //    bg= a.indexOf("/");
 //
@@ -245,6 +261,25 @@ class ServerChatter extends Thread{
 //    System.out.println("\n"+NICK+": "+CONTENT);
 
     break;
+   case "ref" :
+    sendMessage(AML+"END");
+    break;
+   case "alluser":
+    ArrayList<String> users = new ArrayList<>();
+    for(int rc=0;rc<room.chatters.size();rc++){
+     users.add(room.chatters.get(rc).c_id);
+    }
+    sendMessage(""+room.chatters.size());
+    for(int rc=0;rc<users.size();rc++){
+     sendMessage(users.get(rc));
+     System.out.println(users.get(rc));
+    }
+
+    break;
+
+
+    //case ref/1/weqwe
+    // sendMessage(전체체팅);
    default:
     break;
   }

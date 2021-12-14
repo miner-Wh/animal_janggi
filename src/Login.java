@@ -386,6 +386,7 @@ public class Login {
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
 					System.out.println(txtID.getText());
+					chatter.close();
 					new Square(txtID.getText());
 					frame.setVisible(false);
 

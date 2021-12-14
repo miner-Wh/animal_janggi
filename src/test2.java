@@ -23,6 +23,7 @@ public class test2  {
         //objectInputStream.close();
 //
         //System.out.println(is_my_user.size());
+
         objectInputStream.close();
         System.out.println(is_my_user.size());
         //for(int a=0;a<objects.size();a++){
