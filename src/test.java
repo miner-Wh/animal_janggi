@@ -25,6 +25,7 @@ public class test {
         objectOutputStream.writeObject(sample);
 
         objectOutputStream.close();
+        System.out.println("ads");
 
     }
 }
