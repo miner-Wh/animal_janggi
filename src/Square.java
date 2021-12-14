@@ -68,7 +68,7 @@ public class Square extends Login{
 		String myID=id;
 
 		try {
-			myID = chatter.sendMSG_s("myin/1/");
+			myID = chatter.sendMSG_s("myin/1/saddas");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -131,6 +131,13 @@ public class Square extends Login{
 		output.setBackground(Color.WHITE);
 		output.setEditable(false);
 		chatting.add(output);
+		String temp="";
+		try {
+			temp = chatter.sendMSG_as("ref/1/asd");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		output.setText(temp);
 
 		//채팅을 입력하는 칸
 		JTextField input = new JTextField(20);
@@ -149,14 +156,20 @@ public class Square extends Login{
 
 				try {
 					int get = chatter.sendMSG("all/2/" +myUF.nick+"/"+chat_tmp);
-					if(get == 13){
-						chatter.sendMSG_s(chat_tmp);
-					}
+					//if(get == 13){
+					//	chatter.sendMSG_s(chat_tmp);
+					//}
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
 				LocalTime now = LocalTime.now();
-				output.append(" >>> "+chat_tmp+"     "+now.getHour()+":"+now.getMinute()+":"+now.getSecond()+"\n");
+				String temp="";
+				try {
+					temp = chatter.sendMSG_as("ref/1/asd");
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+				output.setText(temp);
 				input.setText("");
 				input.requestFocus();
 
@@ -165,16 +178,23 @@ public class Square extends Login{
 		input_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chat_tmp = input.getText();
+
 				try {
-					int get = chatter.sendMSG("all/1/"+chat_tmp);
-					if(get == 13){
-						chatter.sendMSG_s(chat_tmp);
-					}
+					int get = chatter.sendMSG("all/2/" +myUF.nick+"/"+chat_tmp);
+					//if(get == 13){
+					//	chatter.sendMSG_s(chat_tmp);
+					//}
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
 				LocalTime now = LocalTime.now();
-				output.append(" >>> "+chat_tmp+"     "+now.getHour()+":"+now.getMinute()+":"+now.getSecond()+"\n");
+				String temp="";
+				try {
+					temp = chatter.sendMSG_as("ref/1/asd");
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+				output.setText(temp);
 				input.setText("");
 				input.requestFocus();
 
@@ -186,11 +206,13 @@ public class Square extends Login{
 		re_btn.setSize(20, 20);
 		re_btn.setLocation(717, 782);
 		re_btn.setBackground(Color.GREEN);
-		input.addActionListener(new ActionListener() {
+		re_btn.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("새로고침 누름");
 				String temp="";
 				try {
-					temp = chatter.sendMSG_s("ref/1/asd");
+					temp = chatter.sendMSG_as("ref/1/asd");
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}

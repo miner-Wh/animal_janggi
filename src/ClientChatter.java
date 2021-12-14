@@ -78,7 +78,8 @@ class ClientChatter extends Thread{
  }
 
 
- public void run(){
+ /*
+  public void run(){
   // 입력 기능만 수행하면 된다.
   try{
    String msg="";
@@ -93,6 +94,7 @@ class ClientChatter extends Thread{
    close();
   }
  }
+ * */
 
 
  public int sendMSG(String message) throws IOException {
@@ -123,7 +125,33 @@ class ClientChatter extends Thread{
    return null;
   }
  }
+ public String sendMSG_as(String message) throws IOException {
+  try {
+   String line="";
+   StringBuilder everything = new StringBuilder();
+   pw.println(message);
+   pw.flush();
+   System.out.println("before read");
+   String serverMSG="" ;
+   boolean isT = true;
+   while(true){
+    line = br.readLine();
+    if(line.compareTo("END")==0){
+     System.out.println("나감" +line);
+     break;
+    }
+    System.out.println("아직 도는중 "+line +"<");
+    serverMSG += line+"\n";
+   }
 
+   System.out.println("serverMSG: "+serverMSG);
+   return serverMSG;
+  } catch (Exception e) {
+   System.out.println(e.getMessage());
+   System.out.println("sendMSG()에서 예외 발생....");
+   return null;
+  }
+ }
 
  public void close(){
   try{

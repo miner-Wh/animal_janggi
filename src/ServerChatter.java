@@ -73,6 +73,7 @@ class ServerChatter extends Thread{
   if(room.chatters.get(0) != null){
    AML = room.chatters.get(0).AML;
   }
+  System.out.println("초기 전쳇"+AML);
 
   try{
    FileInputStream fileStream = new FileInputStream("./user_test.dat");
@@ -237,12 +238,16 @@ class ServerChatter extends Thread{
    case "all":
     System.out.println("inALL");
 
-    sendMessage("13");
-    String allMSG = br.readLine();
-    AML+= allMSG;
+    bg= a.indexOf("/");
+    NICK =a.substring(0,bg);
+    a = a.substring(bg+1);
+
+    String allMSG = a;
+    AML+= NICK+": "+allMSG+"\n";
     for(int rc=0;rc<room.chatters.size();rc++){
      room.chatters.get(rc).AML = AML;
     }
+    sendMessage("4");
     //for(룸 내의 모든 server chatter의 전체체팅 this.전체 체팅
 
 //    bg= a.indexOf("/");
@@ -255,7 +260,7 @@ class ServerChatter extends Thread{
 
     break;
    case "ref" :
-    sendMessage(AML);
+    sendMessage(AML+"END");
 
 
     //case ref/1/weqwe
