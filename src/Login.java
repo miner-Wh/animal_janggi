@@ -15,11 +15,11 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.SystemColor;
-import java.io.*;
-import java.util.ArrayList;
+import java.io.IOException;
 
 public class Login {
 	ClientChatter chatter = new ClientChatter();
+
 	boolean check1 =false;
 	private JFrame frame;
 	private JTextField txtCreateID;
@@ -28,10 +28,6 @@ public class Login {
 	private JTextField txtNickName;
 	private JTextField txtSNS;
 	private JTextField txtMail;
-	public String ids;
-	public String pws;
-
-
 
 	/**
 	 * Launch the application.
@@ -201,6 +197,10 @@ public class Login {
 				String new_sns = txtSNS.getText();
 				String new_mail = txtMail.getText();
 				String new_nickname = txtNickName.getText();
+				if(new_mail.indexOf("@")==-1){
+					new_mail =new_mail+"@unKnown.com";
+				}
+
 				if(check1) {
 
 					int get =0;
@@ -376,22 +376,18 @@ public class Login {
 		logbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int get=0;
-				ids = txtID.getText();
-				pws = txtpassword.getText();
 
 				try {
-					get = chatter.sendMSG("log/2/"+ids+"/"+pws);
+					get = chatter.sendMSG("log/2/"+txtID.getText()+"/"+txtpassword.getText());
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
 
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
-
-
-
+					System.out.println(txtID.getText());
+					new Square(txtID.getText());
 					frame.setVisible(false);
-					new Square();
 
 				}
 				else if(get==2) {

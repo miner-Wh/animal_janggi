@@ -1,6 +1,9 @@
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.time.LocalTime;
 import javax.swing.JFrame;
 import javax.swing.border.*;
@@ -20,45 +23,86 @@ import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 
 public class Square extends Login{
 
 
 	String chat_tmp;
-
+	public user_info myUF;
 	private JFrame frame;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Square window = new Square();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	//public static void main(String[] args) {
+	//	EventQueue.invokeLater(new Runnable() {
+	//		public void run() {
+	//			try {
+	//				Square window = new Square("");
+	//				window.frame.setVisible(true);
+	//			} catch (Exception e) {
+	//				e.printStackTrace();
+	//			}
+	//		}
+	//	});
+	//}
 
 	/**
 	 * Create the application.
 	 */
-	public Square() {
-		initialize();
+	Square(String id) {
+
+		System.out.println(id+" is 생성");
+		initialize(id);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		System.out.println(ids+"\n"+pws);
-		ClientChatter chatter = super.chatter;
+	private void initialize(String id) {
 
+		System.out.println(id+" is 생성후");
+		ClientChatter chatter = super.chatter;
+		String myID=id;
+
+		try {
+			myID = chatter.sendMSG_s("myin/1/");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		FileInputStream fileStream = null;
+		try {
+			System.out.println("try in");
+			fileStream = new FileInputStream("./user_test.dat");
+
+			ObjectInputStream objectInputStream = new ObjectInputStream(fileStream);
+			ArrayList<user_info> is_my_user = (ArrayList<user_info>) objectInputStream.readObject();
+			objectInputStream.close();
+
+			//System.out.println(is_my_user.size());
+
+			for (int n = 0; n < is_my_user.size(); n++) {
+				System.out.println("for in"+id);
+				user_info temp = is_my_user.get(n);
+				if (temp.ID.compareTo(id) == 0) {
+
+					System.out.println("if in");
+					myUF = temp;
+					System.out.println(temp.ID);
+					System.out.println(myUF.ID);
+					break;
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		frame = new JFrame();
 		frame.setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 450, 300);
@@ -154,17 +198,17 @@ public class Square extends Login{
 		JButton users_btn = new JButton("USERS");
 		users_btn.setBackground(Color.GRAY);
 		users_btn.setFont(new Font("굴림", Font.BOLD, 18));
-		users_btn.setBounds(185, 24, 145, 50);
+		users_btn.setBounds(41, 24, 289, 50);
 		users_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		room_list.add(users_btn);
-		//게임방 버튼
-		JButton room_btn = new JButton("ROOM");
-		room_btn.setBackground(Color.LIGHT_GRAY);
-		room_btn.setFont(new Font("굴림", Font.BOLD, 18));
-		room_btn.setLocation(41, 24);
-		room_btn.setSize(145, 50);
-		room_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		room_list.add(room_btn);
+		////게임방 버튼
+		//JButton room_btn = new JButton("ROOM");
+		//room_btn.setBackground(Color.LIGHT_GRAY);
+		//room_btn.setFont(new Font("굴림", Font.BOLD, 18));
+		//room_btn.setLocation(41, 24);
+		//room_btn.setSize(145, 50);
+		//room_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		//room_list.add(room_btn);
 
 
 		////////////////////////////////////////////////
@@ -174,18 +218,19 @@ public class Square extends Login{
 		users_list.setBounds(41, 72, 289, 400);
 		room_list.add(users_list);
 		users_list.setLayout(null);
-		users_list.setVisible(false);
+		users_list.setVisible(true);
 		users_list.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 
-		////////////////////////////////////////////////
-		///////////게임방 패널
-		JPanel rooms_list = new JPanel();
-		rooms_list.setBackground(Color.LIGHT_GRAY);
-		rooms_list.setBounds(41, 72, 289, 400);
-		room_list.add(rooms_list);
-		rooms_list.setLayout(null);
-		rooms_list.setVisible(true);
-		rooms_list.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		//////////////////////////////////////////////////
+		/////////////게임방 패널
+		//JPanel rooms_list = new JPanel();
+		//rooms_list.setBackground(Color.LIGHT_GRAY);
+		//rooms_list.setBounds(41, 72, 289, 400);
+		//room_list.add(rooms_list);
+		//rooms_list.setLayout(null);
+		//rooms_list.setVisible(true);
+		//rooms_list.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		/*
 		int room1_tmp=0;
 		JButton room1 = new JButton("ROOM 1"+"              "+room1_tmp+" / 2");
 		room1.setBounds(24, 30, 240, 35);
@@ -249,7 +294,7 @@ public class Square extends Login{
 			}
 		});
 
-
+*/
 		//////////////////////////////////////////////
 		/////////내정보 패널/////////////////////////////
 		//////////////////////////////////////////////
@@ -264,36 +309,56 @@ public class Square extends Login{
 		info_title.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		info_title.setHorizontalAlignment(SwingConstants.CENTER);
 		info_title.setFont(new Font("굴림", Font.BOLD, 20));
-		info_title.setBounds(12, 37, 157, 29);
+		info_title.setBounds(12, 28, 230, 29);
 		user_info.add(info_title);
 		//인포 아이디
-		JTextField info_ID = new JTextField("ID : ");
-
+		JTextField info_ID = new JTextField("ID : "+myUF.ID);
 		info_ID.setEditable(false);
 		info_ID.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		info_ID.setFont(new Font("굴림", Font.BOLD, 20));
-		info_ID.setBounds(49, 101, 157, 29);
+		info_ID.setBounds(49, 70, 230, 29);
 		user_info.add(info_ID);
 		//인포 닉네임
-		JTextField info_NIC = new JTextField("");
+		JTextField info_NIC = new JTextField("Nick : "+myUF.nick);
 		info_NIC.setEditable(false);
 		info_NIC.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		info_NIC.setFont(new Font("굴림", Font.BOLD, 20));
-		info_NIC.setBounds(49, 140, 157, 29);
+		info_NIC.setBounds(49, 100, 230, 29);
 		user_info.add(info_NIC);
+		//인포 메일
+		JTextField info_MAIL = new JTextField("E-mail : "+myUF.email.substring(0,myUF.email.indexOf("@")));
+		info_MAIL.setEditable(false);
+		info_MAIL.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		info_MAIL.setFont(new Font("굴림", Font.BOLD, 14));
+		info_MAIL.setBounds(49, 130, 230, 29);
+		user_info.add(info_MAIL);
+		//인포 메일2
+		JTextField info_MAIL2 = new JTextField("   "+myUF.email.substring(myUF.email.indexOf("@")));
+		info_MAIL2.setEditable(false);
+		info_MAIL2.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		info_MAIL2.setFont(new Font("굴림", Font.BOLD, 14));
+		info_MAIL2.setBounds(49, 160, 230, 29);
+		user_info.add(info_MAIL2);
+		//인포 sns
+		JTextField info_SNS = new JTextField("SNS : "+myUF.sns);
+		info_SNS.setEditable(false);
+		info_SNS.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		info_SNS.setFont(new Font("굴림", Font.BOLD, 20));
+		info_SNS.setBounds(49, 190, 230, 29);
+		user_info.add(info_SNS);
 		//전적
-		JTextField info_WIN = new JTextField("");
+		JTextField info_WIN = new JTextField(myUF.game_record);
 		info_WIN.setEditable(false);
 		info_WIN.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		info_WIN.setFont(new Font("굴림", Font.BOLD, 20));
-		info_WIN.setBounds(49, 179, 157, 29);
+		info_WIN.setBounds(49, 220, 230, 29);
 		user_info.add(info_WIN);
 		//상세정보
 		JButton more = new JButton("more ->");
 		more.setForeground(Color.BLUE);
 		more.setBackground(new Color(240,240,240));
 		more.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 13));
-		more.setBounds(181, 213, 80, 25);
+		more.setBounds(181, 250, 80, 25);
 		more.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		user_info.add(more);
 		more.addActionListener(new ActionListener() {
@@ -304,23 +369,23 @@ public class Square extends Login{
 
 
 
-		//게임방 버튼동작
-		room_btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				room_btn.setBackground(Color.LIGHT_GRAY);
-				users_btn.setBackground(Color.GRAY);
-				rooms_list.setVisible(true);
-				users_list.setVisible(false);
-
-			}
-		});
+		////게임방 버튼동작
+		//room_btn.addActionListener(new ActionListener() {
+		//	public void actionPerformed(ActionEvent e) {
+		//		room_btn.setBackground(Color.LIGHT_GRAY);
+		//		users_btn.setBackground(Color.GRAY);
+		//		rooms_list.setVisible(true);
+		//		users_list.setVisible(false);
+//
+		//	}
+		//});
 
 		//유저방 버튼동작
 		users_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				users_btn.setBackground(Color.LIGHT_GRAY);
-				room_btn.setBackground(Color.GRAY);
-				rooms_list.setVisible(false);
+				//room_btn.setBackground(Color.GRAY);
+				//rooms_list.setVisible(false);
 				users_list.setVisible(true);
 			}
 		});
