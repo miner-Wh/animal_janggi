@@ -10,7 +10,7 @@ class ServerChatter extends Thread{
  BufferedReader br; // 소켓으로부터의 최종 입력 스트림
  PrintWriter pw;  // 소켓으로부터의 최종 출력 스트림
 
-
+ String AML;
  // 현재 서버에 접속된 전체 클라이언트 정보가 저장되어 있다.
  ArrayList<ServerChatter> chatters;
  String c_id;
@@ -69,6 +69,11 @@ class ServerChatter extends Thread{
 
  public void run(){
   String c_id="";
+  AML ="";
+  if(room.chatters.get(0) != null){
+   AML = room.chatters.get(0).AML;
+  }
+
   try{
    FileInputStream fileStream = new FileInputStream("./user_test.dat");
 
@@ -234,7 +239,11 @@ class ServerChatter extends Thread{
 
     sendMessage("13");
     String allMSG = br.readLine();
-    room.broadCasting(allMSG);
+    AML+= allMSG;
+    for(int rc=0;rc<room.chatters.size();rc++){
+     room.chatters.get(rc).AML = AML;
+    }
+    //for(룸 내의 모든 server chatter의 전체체팅 this.전체 체팅
 
 //    bg= a.indexOf("/");
 //
@@ -245,6 +254,12 @@ class ServerChatter extends Thread{
 //    System.out.println("\n"+NICK+": "+CONTENT);
 
     break;
+   case "ref" :
+    sendMessage(AML);
+
+
+    //case ref/1/weqwe
+    // sendMessage(전체체팅);
    default:
     break;
   }

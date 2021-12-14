@@ -188,7 +188,13 @@ public class Square extends Login{
 		re_btn.setBackground(Color.GREEN);
 		input.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				String temp="";
+				try {
+					temp = chatter.sendMSG_s("ref/1/asd");
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+				output.setText(temp);
 			}
 		});
 
