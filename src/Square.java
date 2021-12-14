@@ -24,7 +24,7 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 import java.awt.GridLayout;
 import java.util.ArrayList;
-
+import Prototype.janggi;
 
 public class Square extends Login{
 
@@ -378,6 +378,8 @@ public class Square extends Login{
 		user_info.add(more);
 		more.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new janggi();
+
 
 			}
 		});
