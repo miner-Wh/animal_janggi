@@ -16,10 +16,14 @@ public class test2  {
 
 
         ArrayList<user_info> is_my_user = (ArrayList<user_info>) objectInputStream.readObject();
-        //user_info object = (user_info) objectInputStream.readObject();
 
+        //FileInputStream fileStream = new FileInputStream("./user_test.dat");
+//
+        //ObjectInputStream objectInputStream = new ObjectInputStream(fileStream);
+        //objectInputStream.close();
+//
+        //System.out.println(is_my_user.size());
         objectInputStream.close();
-
         System.out.println(is_my_user.size());
         //for(int a=0;a<objects.size();a++){
         //    user_info temp = objects.get(a);

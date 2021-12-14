@@ -1,23 +1,23 @@
 //전반적인 게임 조작들을 하는 클래스
-class GAME {
-    static final int NOTHING = 0;
-    static final int PLAYER1 = 1;
-    static final int PLAYER2 = 2;
+    class GAME {
+        static final int NOTHING = 0;
+        static final int PLAYER1 = 1;
+        static final int PLAYER2 = 2;
 
-    static final int BOARD = 0;
-    static final int HAVING = 1;
+        static final int BOARD = 0;
+        static final int HAVING = 1;
 
-    static final int Wang = 0;//왕
-    static final int Sang = 1;//상
-    static final int Jang = 2;//장
-    static final int Ja = 3;//자
-    static final int Hu = 4;//후
-    static final int Mu = 5;//무(빈칸)
+        static final int Wang = 0;//왕
+        static final int Sang = 1;//상
+        static final int Jang = 2;//장
+        static final int Ja = 3;//자
+        static final int Hu = 4;//후
+        static final int Mu = 5;//무(빈칸)
 
-    static final int SELECTED = 1;
-    static final int MOVED = 2;
+        static final int SELECTED = 1;
+        static final int MOVED = 2;
 
-    static int[][][] MAL_DIR = {
+        static int[][][] MAL_DIR = {
             {{1, -1}, {1, 0}, {1, 1}, {0, -1}, {0, 1}, {-1, 1}, {-1, 0}, {-1, -1}},
             {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}},
             {{1, 0}, {-1, 0}, {0, 1}, {0, -1}},

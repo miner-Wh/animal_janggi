@@ -10,9 +10,10 @@ class ServerChatter extends Thread{
  BufferedReader br; // 소켓으로부터의 최종 입력 스트림
  PrintWriter pw;  // 소켓으로부터의 최종 출력 스트림
 
+
  // 현재 서버에 접속된 전체 클라이언트 정보가 저장되어 있다.
  ArrayList<ServerChatter> chatters;
-
+ String c_id;
  String id; // 아이디(별칭)--> 대화메세지에 보여질 id(대화명) ==> 로그인처리에 의해 구함
  boolean isLogin;
  ChatRoom room;
@@ -67,8 +68,7 @@ class ServerChatter extends Thread{
 
 
  public void run(){
-
-
+  String c_id="";
   try{
    FileInputStream fileStream = new FileInputStream("./user_test.dat");
 
@@ -166,6 +166,8 @@ class ServerChatter extends Thread{
 
     System.out.println(is_my_user(user,ID,PW));
     sendMessage(is_my_user(user,ID,PW));
+    c_id ="ID";
+
     break;
    case "sign":
     bg= a.indexOf("/");
@@ -209,6 +211,14 @@ class ServerChatter extends Thread{
 
 
     break;
+   case "myin":
+
+    System.out.println(c_id);
+
+    sendMessage(c_id);
+
+
+    break;
    case "dup":
     //   admin
     ID =a.substring(0);
@@ -220,12 +230,19 @@ class ServerChatter extends Thread{
 
     break;
    case "all":
-    bg= a.indexOf("/");
-    NICK =a.substring(0,bg);
-    a = a.substring(bg+1);
+    System.out.println("inALL");
 
-    CONTENT=a.substring(0);
-    System.out.println("\n"+NICK+": "+CONTENT);
+    sendMessage("13");
+    String allMSG = br.readLine();
+    room.broadCasting(allMSG);
+
+//    bg= a.indexOf("/");
+//
+//    NICK =a.substring(0,bg);
+//    a = a.substring(bg+1);
+//
+//    CONTENT=a.substring(0);
+//    System.out.println("\n"+NICK+": "+CONTENT);
 
     break;
    default:

@@ -197,6 +197,10 @@ public class Login {
 				String new_sns = txtSNS.getText();
 				String new_mail = txtMail.getText();
 				String new_nickname = txtNickName.getText();
+				if(new_mail.indexOf("@")==-1){
+					new_mail =new_mail+"@unKnown.com";
+				}
+
 				if(check1) {
 
 					int get =0;
@@ -381,8 +385,10 @@ public class Login {
 
 				if(get==1) {
 					JOptionPane.showMessageDialog(null,"로그인 되었습니다.");
+					System.out.println(txtID.getText());
+					new Square(txtID.getText());
 					frame.setVisible(false);
-					new Square();
+
 				}
 				else if(get==2) {
 					JOptionPane.showMessageDialog(null,"없는 계정 입니다.");

@@ -9,6 +9,8 @@ public class user_info implements Serializable {
     String        sns;
     String        game_record;
     access_record my_access;
+    int w=0;
+    int l=0;
 
     user_info(String ID,String PW,String name, String nick, String email){
         this.ID = ID;
@@ -16,8 +18,10 @@ public class user_info implements Serializable {
         this.name = name;
         this.nick = nick;
         this.email = email;
+        this.w =0;
+        this.l =0;
         this.sns = "";
-        String game_recore;
+        this.game_record ="0승 0패";
         my_access = new access_record();
     }
     user_info(String ID,String PW,String name, String nick, String email,String sns){
@@ -26,7 +30,10 @@ public class user_info implements Serializable {
         this.name = name;
         this.nick = nick;
         this.email = email;
+        this.w =0;
+        this.l =0;
         this.sns = sns;
+        this.game_record ="0승 0패";
         my_access = new access_record();
 
     }
@@ -57,5 +64,14 @@ public class user_info implements Serializable {
 
     public void setGame_record(String game_record) {
         this.game_record = game_record;
+    }
+    public void gameResult(boolean is_win) {
+        if(is_win){
+            this.w++;
+        }
+        else{
+            this.l++;
+        }
+        this.game_record = w+"승 "+l+"패";
     }
 }
