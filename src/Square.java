@@ -148,8 +148,10 @@ public class Square extends Login{
 				chat_tmp = input.getText();
 
 				try {
-					chatter.sendMSG("all/1/"+chat_tmp);
-
+					int get = chatter.sendMSG("all/1/"+chat_tmp);
+					if(get == 13){
+						chatter.sendMSG(chat_tmp);
+					}
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
@@ -164,7 +166,10 @@ public class Square extends Login{
 			public void actionPerformed(ActionEvent e) {
 				chat_tmp = input.getText();
 				try {
-					chatter.sendMSG("all/1/"+chat_tmp);
+					int get = chatter.sendMSG("all/1/"+chat_tmp);
+					if(get == 13){
+						chatter.sendMSG(chat_tmp);
+					}
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}

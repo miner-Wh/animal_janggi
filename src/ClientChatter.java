@@ -109,21 +109,20 @@ class ClientChatter extends Thread{
    return -1;
   }
  }
- public String sendMSG_s(String message) throws IOException {
+ public int sendMSG_info(String message) throws IOException {
   try {
    pw.println(message);
    pw.flush();
    System.out.println("before read");
-   String serverMSG = br.readLine();
+   user_info get = br.;
    System.out.println("serverMSG: "+serverMSG);
-   return serverMSG;
+   return Integer.parseInt(serverMSG);
   } catch (Exception e) {
    System.out.println(e.getMessage());
    System.out.println("sendMSG()에서 예외 발생....");
-   return null;
+   return -1;
   }
  }
-
 
  public void close(){
   try{
