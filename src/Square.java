@@ -181,8 +181,18 @@ public class Square extends Login{
 			}
 		});
 		chatting.add(input_btn);
+		//새로고침 버튼
+		JButton re_btn = new JButton("r");
+		re_btn.setSize(20, 20);
+		re_btn.setLocation(717, 782);
+		re_btn.setBackground(Color.GREEN);
+		input.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 
+			}
+		});
 
+		chatting.add(re_btn);
 
 
 
